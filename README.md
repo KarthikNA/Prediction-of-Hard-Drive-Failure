@@ -1,1 +1,1 @@
-# Prediction-of-Hard-Drive-Failure
+# Prediction of Hard Drive Failure
