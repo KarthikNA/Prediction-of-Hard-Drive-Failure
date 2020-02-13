@@ -3,7 +3,7 @@ Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 20
 
 # Authors
 * [Aishvaryaadevi]
-* [Akarshit]
-* [Karthik](https://github.com/KarthikNA)
-* [Parth]
-* [Vaishnavi]
+* [Akarshit Wal]
+* [Karthik Nama Anil](https://github.com/KarthikNA)
+* [Parth Tamane]
+* [Vaishnavi Kannan]
