@@ -1,0 +1,21 @@
+
+These SQL scripts allow you to calculate the annual failure rate
+for Q4 2019 for disk drives from the published CSV files.
+
+A new SMART Stat was aded in Q4, consisting of 2 (two) fields new columns (fields) of data:
+
+smart_18_normalized
+smart_18_raw
+
+facing after SMART_17_raw
+
+First change your starting directory to the location of the sql files and the 2019 directory/folder.
+
+Then use these commands to reproduce the results:
+
+    $ sqlite3 drive_stats.db
+    sqlite> .read create_Q4_2019.sql
+    sqlite> .read import_Q4_2019.sql
+    sqlite> .read stats_Q4_2019.sql
+    sqlite> .mode columns
+    sqlite> select * from failure_rates order by model;

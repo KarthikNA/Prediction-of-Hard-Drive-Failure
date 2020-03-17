@@ -1,0 +1,64 @@
+HEX	SMART ID	Common Usage	SMART SSD	Kingston	Toshiba	WD	Intel	Samsung	Corsair	SanDiskGb	SanDisk	SandForce	OczVector	Indlinx	JMicron60x	JMicron61x	Micron	MicronMU02	Ocz	Plextor
+1	1	Raw read error rate 	Read Error Rate	Read Error Rate	Read Error Rate	Raw Read Error Rate			Raw Read Error Rate			Raw Read Error Rate				Read Error Rate	Raw Read Error Rate	Raw Read Error Rate	Raw Read Error Rate	Read Error Rate
+2	2	Throughput performance 	Throughput Performance	Throughput Performance	Throughput Performance	Throughput Performance										Throughput Performance				
+3	3	Spinup time	Spin-Up Time	Spin Up Time	Spin-Up Time	Spin Up Time	Spin Up Time									Spin-Up Time			Spin Up Time	
+4	4	Start/Stop count 	Start/Stop Count		Start/Stop Count	Start/Stop Count	Start/Stop Count												Start Stop Count	
+5	5	Reallocated sector count 	Reallocated Sectors Count	Reallocated Sectors Count	Reallocated Sectors Count	Re-allocated Sector Count	Re-Allocated Sector Count	Reallocated Sector Count	Retired Block Count	Reallocated Block Count	Retired Block Count	Retired Block Count	Accumulated Runtime Bad Blocks			Reallocated Sectors Count	Reallocated NAND Blocks	Reallocated Sectors Count	Reallocated Sectors Count	Reallocated Sectors Count
+7	7	Seek error rate 	Seek Error Rate	Seek Error Rate	Seek Error Rate	Seek Error Rate										Seek Error Rate				
+8	8	Seek timer performance 	Seek Time Performance	Seek Time Performance	Seek Time Performance	Seek Time Performance										Seek Time Performance				
+9	9	Power-on hours count 	Power-On Hours	Power-On Hours	Power-On Hours	Power-On Hours Count	Power-On Hours Count	Power-on Hours	Retired Block Count	Power On Hours	Power On Hours	Power-on Hours	Power-On Hours Count	Power-On Hours	Power-On Hours	Power-On Hours	Power On Hours	Power-On Hours	Power-On Hours	Power-On Hours
+A	10	Spinup retry count 	Spin Retry Count	Spin Retry Count	Spin Retry Count	Spin Retry Count										Spin Retry Count				
+B	11	Calibration retry count 	Recalibration Retries		Recalibration Retries	Drive Calibration Retry Count														
+C	12	Power cycle count 	Power Cycle Count	Power Cycle Count	Power Cycle Count	Drive Power Cycle Count	Power Cycle Count	Power-on Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count	Power Cycle Count
+D	13	Soft read error rate 	Soft Read Error Rate stab			Soft Read Error Rate						Soft Read Error Rate					Soft Error Rate	Soft Error Rate		
+F	15																User Capacity	User Capacity		
+10	16																Spare Blocks Available	Spare Blocks Available		
+11	17																Remaining Spare Blocks	Remaining Spare Blocks		
+12	18																			
+16	22																			
+17	23																			
+18	24																			
+A8	168			SATA PHY Error Count	SATA PHY Error Count											SATA PHY Error Count			SATA PHY Error Count	
+AA	170			Bad Block Count			Available Reserved Space	Unused Reserved Block Count (Chip)	Reserve Block Count		Reserve Block Count	Reserve Block Count				Bad Block Count	Reserved Block Count	Reserved Block Count		Grown Bad Blocks
+AD	173			Erase count	Erase Count			Wear Leveling Count		Average Erase Cycle						Erase Count	Average Block-Erase Count	Average Block-Erase Count	Erase Count	Average Program/Erase Count (Total)
+AE	174						Unexpected Power Loss	Unexpected Power Loss Count	Unexpected Power Loss Count	Unexpected Power Loss Count	Unexpected Power Loss Count	Unexpected Power Loss Count	Power Cycle Count (Unplanned)				Unexpected Power Loss Count	Unexpected Power Loss Count		Unexpected Power Loss Count
+B1	177							Wear Leveling Count				Wear Range Delta								Wear Leveling Count
+B3	179							Used Reserved Block Count (Total)												
+B5	181							Program Fail Count (Total)	Program Fail Count			Program Fail Count					Unaligned Access Count	Program Fail Count		Program Fail Count (Total)
+B6	182							Erase Fail Count (Total)				Erase Fail Count						Erase Fail Count		Erase Fail Count (Total)
+B7	183					SATA Downshift Error Count	SATA Downshift Count	Runtime Bad Block (Total)									SATA Interface Downshift	SATA Interface Downshift		
+B8	184	End-to-End Error				End to End Error Det/Corr Count	End to End Error Detection Count	Error Detection				Reported I/O Error Detection Code Errors	Factory Bad Block Count Total	Initial Bad Block Count			Error Correction Count	Error Correction Count	Factory Bad Block Count	
+BB	187	Reported Uncorrectable Errors		Uncorrectable Errors		Reported Uncorrectable Errors	Uncorrectable Error Count	Uncorrectable Error Count	Reported Uncorrectable Errors	Reported Uncorrectable Errors	Reported Uncorrectable Errors	Reported Uncorrectable Errors	Total Uncorrectable NAND Reads				Reported Uncorrectable Errors	Reported Uncorrectable Errors		Uncorrectable Error Count
+BC	188	Command Timeout				Command Time Out											Command Timeout Count	Command Timeout Count		Command Time out
+BD	189	High Fly Writes				High Fly Writes											Factory Bad Block Count	Factory Bad Block Count		
+BE	190	Airflow Temperature				Airflow Temperature	Temperature	Airflow Temperature												
+BF	191	G-sense error rate 				Shock Sense														
+C0	192	Power-off retract count 	Unsafe Shutdown Count	Unsafe Shutdown Count	Unexpected Power Loss Count	Emergency Retract Cycle Count	Unsafe Shutdown Count									Unexpected Power Loss Count		Power-off Retract Count	Unexpected Power Loss Count	Unsafe Shutdown Count
+C1	193	Load/Unload cycle count 				Load/Unload Cycle Count														
+C2	194	HDA temperature 	Temperature	Temperature	Temperature	HDA Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature	Temperature
+C3	195	Hardware ECC recovered 				ECC on the Fly Count		ECC Error Rate				On-the-Fly ECC Uncorrectable Error Count	Total Programming Failures	Program Failure Block Count			Cumulative ECC Bit Correction Count	Cumulative ECC Bit Correction Count		ECC rate
+C4	196	Reallocation count 	Reallocation Event Count	Later Bad Block Count	Reallocation Event Count	Re-allocated Sector Event			Reallocation Event Count			Reallocation Event Count	Total Erase Failures	Erase Failure Block Count			Reallocation Event Count	Reallocation Event Count		Reallocation Event Count
+C5	197	Current pending sector count 	Current Pending Sector Count	Current Pending Sector Count	Current Pending Sector Count	Current Pending Sector Count	Pending Sector Count						Total Read Failures (Uncorrectable)	Read Failure Block Count		Current Pending Sector Count	Current Pending Sector Count	Current Pending Sector Count		
+C6	198	Offline scan uncorrectable count	Uncorrectable Sector Count		Uncorrectable Sector Count	Offline Uncorrectable Sector Count		Off-Line Uncorrectable Error Count				Uncorrectable Sector Count	Host Reads	Total Count of Read Sectors			Smart Off-line Scan Uncorrectable Error Count	Smart Off-line Scan Uncorrectable Error Count		Uncorrectable Sector Count
+C7	199	UDMA CRC error rate 		CRC Error Count		UltraDMA CRC Error Rate	CRC Error Count	CRC Error Count				SATA R-Errors (CRC) Error Count	Host Writes	Total Count of Write Sectors			Ultra DMA CRC Error Rate	Ultra DMA CRC Error Rate		CRC Error Count
+C8	200	Write error rate 				Multi Zone Error Rate								Total Count of Read Commands						
+C9	201	Soft read error rate				Soft Read Error Rate		Super cap Status				Uncorrectable Soft Read Error Rate		Total Count of Write Commands						
+DA	218			CRC Error Count																
+DC	220	Disk shift 				Disk Shift														
+DE	222	Loaded hours 				Loaded hours													RAID Recovery Count	
+DF	223	Load/unload retry count 				Load/Unload Retry Count														
+E0	224	Load friction 				Load Friction							In Warranty							
+E1	225	Load/Unload cycle count 				Load/Unload Cycle Count	Host Writes						DAS Polarity							
+E2	226	Load-in time				Load-in Time	Timed Workload Media Wear						Partial Pfail							
+E7	231	Temperature		SSD Life Left		Temperature			SSD Life Left			SSD Life Left								
+E8	232						Available Reserved Space			Spare Block Remaining	Remaining Life	Available Reserved Space			Firmware Version Information			Available Reserved Space	Total Count of Write Sectors	Available Reserved Space
+E9	233			Lifetime Writes to Flash			Media Wearout Indicator			Total GB Written To NAND			Remaining Life		ECC Fail Record				Remaining Life	NAND GB written
+EB	235							POR Recovery Count				SuperCap health			"Good Block Count, System Block Count"					
+F0	240	Head flying hours 		Write Head		Head Flying Hours														
+F1	241		Total Host Writes	Host Writes	Total Host Writes	Total LBAs written	Total LBAs Written	Total LBAs Written	Lifetime GB Written	Total GB Written	Total Host Writes	Lifetime Writes from Host	Total Host Writes					Total LBA Write		Total LBA written
+F2	242		Total Host Reads	Host Reads	Total Host Reads	Total LBAs read	Total LBAs Read	Total LBAs Read	Lifetime GB Read	Total GB Read	Total Host Reads	Lifetime Reads from Host	Total Host Reads				Write Protect Progress	Total LBA Read		Total LBA read
+FA	250	Read error retry rate 				Read Error Retry Rate														
+FB	251																		NAND Read Count	
+FC	252																			
+FE	254	Free Fall Protection				Free Fall Sensor														
+FF	255																			
