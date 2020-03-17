@@ -5,7 +5,7 @@ Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-tes
 
 # Smart Stats List
 
-[List of all S.M.A.R.T. Attributes Including Vendor Specific] https://www.data-medics.com/forum/list-of-all-s-m-a-r-t-attributes-including-vendor-specific-t1476.html
+[List of all S.M.A.R.T. Attributes Including Vendor Specific](https://www.data-medics.com/forum/list-of-all-s-m-a-r-t-attributes-including-vendor-specific-t1476.html)
 
 |SMART NO.| Common Usage
 |---|---|
@@ -77,5 +77,5 @@ Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-tes
 * [Aishvaryaadevi]
 * [Akarshit Wal]
 * [Karthik Nama Anil](https://github.com/KarthikNA)
-* [Parth Tamane] (https://github.com/parthv21)
+* [Parth Tamane](https://github.com/parthv21)
 * [Vaishnavi Kannan]
