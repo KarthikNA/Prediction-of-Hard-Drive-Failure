@@ -80,8 +80,8 @@ Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-tes
 
 
 # Authors
-* [Aishvaryaadevi]
-* [Akarshit Wal]
+* [Aishvaryaadevi](https://github.com/Aishvaryaa)
+* [Akarshit Wal](https://github.com/Akarshit)
 * [Karthik Nama Anil](https://github.com/KarthikNA)
 * [Parth Tamane](https://github.com/parthv21)
-* [Vaishnavi Kannan]
+* [Vaishnavi Kannan](https://github.com/Vaishnavik22)
