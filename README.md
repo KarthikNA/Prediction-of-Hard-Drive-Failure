@@ -5,6 +5,10 @@
   <img src="https://store.hp.com/app/assets/images/uploads/prod/how-to-partition-a-hard-drive-hero1540248594219.jpg"> 
 </p>
 
+<p align="center">
+    <img src="https://www.digitalcitizen.life/sites/default/files/styles/img_amp/public/featured/2017-07/recovery.png">
+</p>
+
 # Introduction
 
 # Motivation
