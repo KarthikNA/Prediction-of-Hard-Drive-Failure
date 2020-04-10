@@ -1,0 +1,32 @@
+{
+  "ST12000NM0007": {
+    "original_column_count": 129,
+    "dropping_normalised": 69,
+    "dropping_nan": 27,
+    "dropping_repeat_val": 24
+  },
+  "ST4000DM000": {
+    "original_column_count": 129,
+    "dropping_normalised": 69,
+    "dropping_nan": 29,
+    "dropping_repeat_val": 26
+  },
+  "ST8000NM0055": {
+    "original_column_count": 129,
+    "dropping_normalised": 69,
+    "dropping_nan": 29,
+    "dropping_repeat_val": 26
+  },
+  "ST8000DM002": {
+    "original_column_count": 129,
+    "dropping_normalised": 69,
+    "dropping_nan": 29,
+    "dropping_repeat_val": 26
+  },
+  "TOSHIBA MQ01ABF050": {
+    "original_column_count": 129,
+    "dropping_normalised": 69,
+    "dropping_nan": 29,
+    "dropping_repeat_val": 19
+  }
+}
