@@ -1,14 +1,24 @@
-# Prediction of Hard Drive Failure
 
----
-
-### Project 21: Akarshit Wal, Gnanaguruparan Aishvaryaadevi, Karthik Nama Anil, Parth Tamane, Vaishnavi Kannan  
-
----
+#### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
 <p align="center">
   <img src="https://store.hp.com/app/assets/images/uploads/prod/how-to-partition-a-hard-drive-hero1540248594219.jpg"> 
 </p>
+
+# Introduction
+
+# Motivation
+
+# Problem Statement
+
+# Dataset
+
+# Methodology
+
+# Results
+
+# Conclusion
+
 
 Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 2019](https://www.kaggle.com/jackywangkaggle/hard-drive-data-and-stats)
 
