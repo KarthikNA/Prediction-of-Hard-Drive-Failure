@@ -13,6 +13,10 @@
 
 # Dataset
 
+<p align="center">
+    <img src="https://blog.cometbackup.com/wp-content/uploads/2019/01/469470-backblaze.png">
+</p>
+
 # Methodology
 
 # Results
