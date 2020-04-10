@@ -1,0 +1,5 @@
+,index,ST12000NM0007,ST4000DM000,ST8000NM0055,ST8000DM002,TOSHIBA MQ01ABF050
+0,original_column_count,129,129,129,129,129
+1,dropping_normalised,69,69,69,69,69
+2,dropping_nan,27,29,29,29,29
+3,dropping_repeat_val,24,26,26,26,19
