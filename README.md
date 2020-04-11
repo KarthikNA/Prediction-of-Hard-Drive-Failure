@@ -51,6 +51,10 @@ The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-tes
 
 
 # Methodology
+The data obtained from Backblaze was aggregated and cleaned using different techniques. 
+Relevant features were determined for further analysis. A combination of supervised and unsupervised learning
+techniques were adopted to predict the failure of a hard disk drive from S.M.A.R.T statistics and 
+cluster hard drives based on S.M.A.R.T statistics. The results were further analysed and visualised.
 
 <p align="center">
     <img src="images/methodology.png">
