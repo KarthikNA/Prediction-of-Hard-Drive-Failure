@@ -5,8 +5,6 @@
     <img src="images/coverimg.png">
 </p>
 
-
-
 # Introduction
 
 # Motivation
@@ -15,11 +13,16 @@
 
 # Dataset
 
-![Backblaze Logo](images/backblazelogo.png)
+<p align="center">
+    <img src="images/backblazelogo.png">
+</p>
 
 # Methodology
 
-![Methodology](images/methodology.png)
+<p align="center">
+    <img src="images/methodology.png">
+</p>
+
 
 ## Data Cleaning
 
