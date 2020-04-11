@@ -97,6 +97,9 @@ We took a similar approach for unsupervised learning as well. Realizing that the
 
 One important point to note in both the learning algorithms is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data.
 
+# What's new in our approach?
+
+Since the Backblaze data already has class labels indicating whether a disk has failed or not, this dataset is well-suited for supervised learning. All prior notable works focus on building a classifier that can make accurate predictions. We however attempt to solve the same problem using unsupervised learning as well. Although there have been works that make use of unsupervised learning to augment data and tackle the class imbalance problem, to the best of our knowledge, we are the first to apply principles of anamoly detection on the Backblaze dataset to predict failure events.
 
 # Results
 
