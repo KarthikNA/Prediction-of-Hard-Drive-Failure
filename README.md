@@ -92,24 +92,259 @@ One important point to note in both the learning algorithms is that since we're 
 
 # Results
 
-### Random Forest
+##### Table 1 : Random Forest results on original dataset for the 1st quarter of 2019
 
-<p align="center">
-    <img src="images/RF.png">
-</p>
+>Accuracy:  0.9994109693116142
+
+|labels|precision|recall|f1-score | support|
+|------|---------|------|---------|--------|
+|0     |1.00     |1.00  |1.00     |883986  |
+|1     |0.47     |0.05  |0.08     |518     | 
 
 
-### XG Boost
+##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
 
-<p align="center">
-    <img src="images/XGB.png">
-</p>
+> Accuracy:  0.9948433919022154
+
+|labels|precision|recall|f1-score | support|
+|------|---------|------|---------|--------|
+|0     |1.00     |1.00  |1.00     |10418   |
+|1     |0.50     |0.15  |0.23     |54      |
+
+##### Table 3 :  Random Forest results post parameter tuning
+
+
+<!-- Parameters:
+```
+{
+    'n_estimators': 2000, 
+    'min_samples_split': 5, 
+    'min_samples_leaf': 4, 
+    'max_features': 'auto', 
+    'max_depth': 40, 
+    'criterion': 'entropy', 
+    'bootstrap': True
+}
+``` -->
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2">0.9997123</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9999358</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">0.9990637</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">239</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
+  </tr>
+  
+</table>
+
+
+##### Table 4 :  XGBoost classifier results post parameter tuning
+
+<!-- Paramteres:
+```
+{ 
+    learning_rate: 0.2,
+    n_estimators: 1251,
+    max_depth: 3,
+    min_child_weight: 3,
+    gamma: 0.1,
+    reg_alpha: 0.01,
+    subsample: 0.8,
+    colsample_bytree: 0.8,
+    objective: 'binary:logistic',
+    scale_pos_weight: 1,
+    seed: 27)
+} 
+``` -->
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9922837</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh"> 0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.79</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.88</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9991438</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.95</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">239</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
+  </tr>  
+</table>
 
 ### Isolation Forest
-
-<p align="center">
-    <img src="images/IF.png">
-</p>
 
 # Conclusion
 
