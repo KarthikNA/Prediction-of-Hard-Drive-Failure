@@ -69,9 +69,26 @@ The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-tes
 
 ## Feature Selection
 
-## Unsupervised Learning
+## Unsupervised and Supervised Learning
 
-## Supervised Learning
+We approached the task of predicting hard disk failures using Supervised as well as Unsupervised Learning algorithms.
+
+The dataset used for both the algorithms is the Backblaze dataset which composes of S.M.A.R.T attributes corresponding to the hard drives. Since the meaning and range of values of the same  S.M.A.R.T attributes can change across models, we decided to create a separate classifier for predicting failures of each hard disk model.
+
+One of the major challenges we faced was the class imbalance problem where we have significantly less number of records for failed disks when compared to those that did not fail. This is primarily because failure of a hard disk is a rare event given its life span. The label for the failed disk is marked as 1 only on the day of its failure and then removed from the dataset.
+
+The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for last 10 days of a failed hard disk to 1. Even with this approach, we had 2946617 rows for disks that did not fail and 1725 rows for those that failed. 
+
+As shown in table 1, lthough accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a  possible failure event. 
+
+So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failaing drives -  1) SMOTE and 2) Random resampling with replacement.
+
+What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest.
+
+We took a similar approach for unsupervised learning as well. Realizing that the task of hard disk prediction resembles anamoly detection giveen the nature of the dataset, we used the Isolation Forest anamoly detecttion algorithm and tuned parameters to create a model that is capable of making good predictions.
+
+One important point to note in both the learning algorithms is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data.
+
 
 # Results
 
@@ -102,7 +119,7 @@ The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-tes
 3. Jing Shen, Jian Wan, Se-Jung Lim, and Lifeng Yu. Random-forest-based failure prediction for hard disk drives. International Journal of Distributed Sensor Networks, 14(11):1550147718806480, 2018.
 4. Backblaze. Backblaze hard drive state, 2020.
 5. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
-
+6. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013). https://doi.org/10.1186/1471-2105-14-106
 ----
 
 Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 2019](https://www.kaggle.com/jackywangkaggle/hard-drive-data-and-stats)
