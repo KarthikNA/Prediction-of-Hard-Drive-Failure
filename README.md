@@ -20,6 +20,14 @@
 
 # Methodology
 
+## Data Cleaning
+
+## Feature Selection
+
+## Unsupervised Learning
+
+## Supervised Learning
+
 <p align="center">
     <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/methodology.png">
 </p>
