@@ -2,7 +2,7 @@
 #### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
 <p align="center">
-    <img src="images/coverimg.png">
+    <img src="images/cover_img.png">
 </p>
 
 # Introduction
@@ -29,8 +29,10 @@ We have also compared difference machine learning algorithms and their accuracy 
 # Dataset
 
 <p align="center">
-    <img src="images/backblazelogo.png">
+    <img src="images/backblaze_logo.png">
 </p>
+
+## S.M.A.R.T Statistics
 
 # Methodology
 
@@ -40,6 +42,14 @@ We have also compared difference machine learning algorithms and their accuracy 
 
 
 ## Data Cleaning
+
+<p align="center">
+    <img src="images/hdd_model_selection.png">
+</p>
+
+<p align="center">
+    <img src="images/feature_reduction.png">
+</p>
 
 ## Feature Selection
 
