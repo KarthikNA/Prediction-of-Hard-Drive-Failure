@@ -91,7 +91,7 @@ As shown in table 1, lthough accuracy of prediction in this case was high, recal
 
 So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failaing drives -  1) SMOTE and 2) Random resampling with replacement.
 
-What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest.
+What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on.
 
 We took a similar approach for unsupervised learning as well. Realizing that the task of hard disk prediction resembles anamoly detection giveen the nature of the dataset, we used the Isolation Forest anamoly detecttion algorithm and tuned parameters to create a model that is capable of making good predictions.
 
@@ -179,22 +179,22 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-baqh">1</td>
     <td class="tg-0lax">794</td>
   </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">0.9990637</td>
+
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
+    <td class="tg-0lax">28906</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
   </tr>
   
   
@@ -216,22 +216,22 @@ One important point to note in both the learning algorithms is that since we're 
   </tr>
   
   <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">0.9990637</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
+    <td class="tg-0lax">912</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">436</td>
+    <td class="tg-0lax">156</td>
   </tr>
-  
+
 </table>
 
 
@@ -299,23 +299,22 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-0lax">794</td>
   </tr>
   
-  <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">1</td>
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
+    <td class="tg-0lax">28906</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
-  </tr>
-  
+    <td class="tg-0lax">436</td>
+  </tr>  
   
   <tr>
     <td class="tg-0pky" rowspan="2">ST8000DM002</td>
@@ -334,22 +333,23 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-0lax">239</td>
   </tr>
   
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
+   <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">1</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
+    <td class="tg-0lax">912</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">436</td>
-  </tr>  
+    <td class="tg-0lax">156</td>
+  </tr>
+ 
 </table>
 
 
