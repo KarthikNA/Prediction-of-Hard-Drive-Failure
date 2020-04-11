@@ -5,9 +5,6 @@
     <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/coverimg.png">
 </p>
 
-<p align="center">
-    <img src="https://www.digitalcitizen.life/sites/default/files/styles/img_amp/public/featured/2017-07/recovery.png">
-</p>
 
 # Introduction
 
@@ -23,17 +20,16 @@
 
 # Methodology
 
+<p align="center">
+    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/methodology.png">
+</p>
+
 # Results
 
 # Conclusion
 
-<p align="center">
-  <img src="https://store.hp.com/app/assets/images/uploads/prod/how-to-partition-a-hard-drive-hero1540248594219.jpg"> 
-</p>
 
-<p align="center">
-    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/methodology.png">
-</p>
+----
 
 Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 2019](https://www.kaggle.com/jackywangkaggle/hard-drive-data-and-stats)
 
