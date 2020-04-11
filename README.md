@@ -28,23 +28,26 @@ We have also compared difference machine learning algorithms and their accuracy 
 
 # Dataset
 
-Backblaze owns and operates multiple data centres that have more than a million hard disk drives. 
+Backblaze owns and operates multiple data centres that have thousands of hard disk drives. 
 They regularly share data about the performance of these drives as well other insights from their datacenters. 
 
 <p align="center">
     <img src="images/backblaze_logo.png">
 </p>
 
+Every disk drive includes Self-Monitoring, Analysis, and Reporting Technology (S.M.A.R.T), 
+which reports internal information about the drive and its primary function is to detect 
+as well as report multiple indicators of hard disk drive reliability with the intent of anticipating 
+imminent hardware failures.
+
 Backblaze takes a snapshot of each operational hard drive daily and the data includes drive’s serial number, model number, disk capacity, 
 a label indicating disk failure, and S.M.A.R.T stats.  
 
-Data for the project was collected from January 1st 2019 to December 31st 2019 and data was in 365 CSV files
+Data for the project was collected from January 1st, 2019 to December 31st, 2019 and data was in 365 CSV files
 with each representing one day of the year. Each file has 129 columns. 62 S.M.A.R.T statistics is represented both as 
 raw values as well as normalised values(a total of 124 columns). The other columns provide information about the hard disk and the date of the record.
 
 The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-test-data.html).
-
-## S.M.A.R.T Statistics
 
 # Methodology
 
