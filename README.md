@@ -96,20 +96,20 @@ One important point to note in both the learning algorithms is that since we're 
 
 >Accuracy:  0.9994109693116142
 
-|labels|precision|recall|f1-score | support|
-|------|---------|------|---------|--------|
-|0     |1.00     |1.00  |1.00     |883986  |
-|1     |0.47     |0.05  |0.08     |518     | 
+|labels|precision|recall|f1-score | 
+|------|---------|------|---------|
+|0     |1.00     |1.00  |1.00     |
+|1     |0.47     |0.05  |0.08     |
 
 
 ##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
 
 > Accuracy:  0.9948433919022154
 
-|labels|precision|recall|f1-score | support|
-|------|---------|------|---------|--------|
-|0     |1.00     |1.00  |1.00     |10418   |
-|1     |0.50     |0.15  |0.23     |54      |
+|labels|precision|recall|f1-score | 
+|------|---------|------|---------|
+|0     |1.00     |1.00  |1.00     |
+|1     |0.50     |0.15  |0.23     |
 
 ##### Table 3 :  Random Forest results post parameter tuning
 
