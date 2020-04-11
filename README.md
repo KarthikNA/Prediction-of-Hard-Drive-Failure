@@ -2,9 +2,8 @@
 #### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
 <p align="center">
-    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/coverimg.png">
+    <img src="images/coverimg.png">
 </p>
-
 
 # Introduction
 Hard disk failures can be catastrophic in large scale data centers leading to potential loss of all data. To alleviate the
@@ -30,16 +29,37 @@ We have also compared difference machine learning algorithms and their accuracy 
 # Dataset
 
 <p align="center">
-    <img src="https://blog.cometbackup.com/wp-content/uploads/2019/01/469470-backblaze.png">
+    <img src="images/backblazelogo.png">
 </p>
 
 # Methodology
 
 <p align="center">
-    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/methodology.png">
+    <img src="images/methodology.png">
 </p>
 
+
+## Data Cleaning
+
+## Feature Selection
+
+## Unsupervised Learning
+
+## Supervised Learning
+
 # Results
+
+### Random Forest
+
+![Random Forest](images/RF.png)
+
+### XG Boost
+
+![XG Boost](images/XGB.png)
+
+### Isolation Forest
+
+![Isoloation Forest](images/IF.png)
 
 # Conclusion
 
