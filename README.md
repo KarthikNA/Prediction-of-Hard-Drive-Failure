@@ -175,22 +175,22 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-baqh">1</td>
     <td class="tg-0lax">794</td>
   </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">0.9990637</td>
+
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
+    <td class="tg-0lax">28906</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
   </tr>
   
   
@@ -212,22 +212,22 @@ One important point to note in both the learning algorithms is that since we're 
   </tr>
   
   <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">0.9990637</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
+    <td class="tg-0lax">912</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">436</td>
+    <td class="tg-0lax">156</td>
   </tr>
-  
+
 </table>
 
 
@@ -295,23 +295,22 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-0lax">794</td>
   </tr>
   
-  <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">1</td>
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
+    <td class="tg-0lax">28906</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
-  </tr>
-  
+    <td class="tg-0lax">436</td>
+  </tr>  
   
   <tr>
     <td class="tg-0pky" rowspan="2">ST8000DM002</td>
@@ -330,22 +329,23 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-0lax">239</td>
   </tr>
   
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
+   <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">1</td>
     <td class="tg-baqh">0</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
+    <td class="tg-0lax">912</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-0lax">436</td>
-  </tr>  
+    <td class="tg-0lax">156</td>
+  </tr>
+ 
 </table>
 
 
