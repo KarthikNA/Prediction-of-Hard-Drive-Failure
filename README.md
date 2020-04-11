@@ -1,7 +1,11 @@
 
 #### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
-![Cover Image](images/coverimg.png)
+<p align="center">
+    <img src="images/coverimg.png">
+</p>
+
+
 
 # Introduction
 
