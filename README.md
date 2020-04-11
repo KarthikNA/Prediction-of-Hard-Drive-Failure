@@ -1,9 +1,8 @@
 
 #### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
-
 <p align="center">
-  <img src="https://store.hp.com/app/assets/images/uploads/prod/how-to-partition-a-hard-drive-hero1540248594219.jpg"> 
+    <img src="images/coverimg.png">
 </p>
 
 <p align="center">
@@ -28,7 +27,9 @@
 
 # Conclusion
 
-
+<p align="center">
+  <img src="https://store.hp.com/app/assets/images/uploads/prod/how-to-partition-a-hard-drive-hero1540248594219.jpg"> 
+</p>
 
 Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 2019](https://www.kaggle.com/jackywangkaggle/hard-drive-data-and-stats)
 
