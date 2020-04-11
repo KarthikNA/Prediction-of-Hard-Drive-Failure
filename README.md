@@ -64,6 +64,10 @@ The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-tes
 </p>
 
 <p align="center">
+    <img src="images/hard_disks.png">
+</p>
+
+<p align="center">
     <img src="images/feature_reduction.png">
 </p>
 
