@@ -249,7 +249,7 @@ One important point to note in both the learning algorithms is that since we're 
     seed: 27)
 } 
 ``` -->
-<div align="center">
+
 <table class="tg">
   <tr>
     <th class="tg-0pky">Model</th>
@@ -347,7 +347,6 @@ One important point to note in both the learning algorithms is that since we're 
     <td class="tg-0lax">436</td>
   </tr>  
 </table>
-</div>
 
 ### Isolation Forest
 
