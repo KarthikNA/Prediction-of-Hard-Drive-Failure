@@ -348,9 +348,116 @@ One important point to note in both the learning algorithms is that since we're 
   </tr>  
 </table>
 
+
 ### Isolation Forest
 
+
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9997122</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9999357</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">239</td>
+  </tr>  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">0.9990636</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+  
+</table>
+
+
 # Conclusion
+
+
+# Future Work
+We suspect that our models are overfit on cases where there were very few hard disk failures i.e. TOSHIBA MQ01ABF050, ST8000DM002. In future we hope to train on a larger data set, thereby reducing over fitting. We also would like to explore the possibility of creating a generic classifier for all hard disk models. 
+
 
 # References
 1. C. Xu, G. Wang, X. Liu, D. Guo, and T. Liu. Health status assessment and failure prediction for hard drives with recurrent neural networks. IEEE Transactions on Computers, 65(11):3502–3508, Nov 2016.
