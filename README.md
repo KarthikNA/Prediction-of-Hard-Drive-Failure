@@ -36,18 +36,26 @@
 
 ### Random Forest
 
-![Random Forest](images/RF.png)
+<p align="center">
+    <img src="images/RF.png">
+</p>
+
 
 ### XG Boost
 
-![XG Boost](images/XGB.png)
+<p align="center">
+    <img src="images/XGB.png">
+</p>
 
 ### Isolation Forest
 
-![Isoloation Forest](images/IF.png)
+<p align="center">
+    <img src="images/IF.png">
+</p>
 
 # Conclusion
 
+# References
 
 ----
 
