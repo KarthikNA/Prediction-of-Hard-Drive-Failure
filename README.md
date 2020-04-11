@@ -71,6 +71,11 @@ We have also compared difference machine learning algorithms and their accuracy 
 # Conclusion
 
 # References
+1. C. Xu, G. Wang, X. Liu, D. Guo, and T. Liu. Health status assessment and failure prediction for hard drives with recurrent neural networks. IEEE Transactions on Computers, 65(11):3502–3508, Nov 2016.
+2. Mirela Madalina Botezatu, Ioana Giurgiu, Jasmina Bogojeska, and Dorothea Wiesmann. Predicting disk re- placement towards reliable data centers. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016.
+3. Jing Shen, Jian Wan, Se-Jung Lim, and Lifeng Yu. Random-forest-based failure prediction for hard disk drives. International Journal of Distributed Sensor Networks, 14(11):1550147718806480, 2018.
+4. Backblaze. Backblaze hard drive state, 2020.
+5. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
 
 ----
 
@@ -86,18 +91,3 @@ Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-tes
 
 [Western Digital SMART attributes](https://sourceforge.net/p/smartmontools/mailman/message/23829511/)
 
-
-# Authors
-* [Akarshit Wal](https://github.com/Akarshit)
-* [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa)
-* [Karthik Nama Anil](https://github.com/KarthikNA)
-* [Parth Tamane](https://github.com/parthv21)
-* [Vaishnavi Kannan](https://github.com/Vaishnavik22)
-
-# References
-[1] C. Xu, G. Wang, X. Liu, D. Guo, and T. Liu. Health status assessment and failure prediction for hard drives with
-recurrent neural networks. IEEE Transactions on Computers, 65(11):3502–3508, Nov 2016.
-[2] Mirela Madalina Botezatu, Ioana Giurgiu, Jasmina Bogojeska, and Dorothea Wiesmann. Predicting disk replacement towards reliable data centers. In Proceedings of the 22nd ACM SIGKDD International Conference on
-Knowledge Discovery and Data Mining, 2016.
-[3] Jing Shen, Jian Wan, Se-Jung Lim, and Lifeng Yu. Random-forest-based failure prediction for hard disk drives.
-International Journal of Distributed Sensor Networks, 14(11):1550147718806480, 2018.
