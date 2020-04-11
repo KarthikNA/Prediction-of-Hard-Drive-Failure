@@ -27,6 +27,18 @@
 
 # Results
 
+### Random Forest
+
+![Random Forest](images/RF.png)
+
+### XG Boost
+
+![XG Boost](images/XGB.png)
+
+### Isolation Forest
+
+![Isoloation Forest](images/IF.png)
+
 # Conclusion
 
 
