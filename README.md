@@ -1,10 +1,7 @@
 
 #### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
-<p align="center">
-    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/coverimg.png">
-</p>
-
+![Cover Image](images/coverimg.png)
 
 # Introduction
 
@@ -14,11 +11,11 @@
 
 # Dataset
 
-<p align="center">
-    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/backblazelogo.png">
-</p>
+![Backblaze Logo](images/backblazelogo.png)
 
 # Methodology
+
+![Methodology](images/methodology.png)
 
 ## Data Cleaning
 
@@ -27,10 +24,6 @@
 ## Unsupervised Learning
 
 ## Supervised Learning
-
-<p align="center">
-    <img src="https://github.com/KarthikNA/Prediction-of-Hard-Drive-Failure/blob/master/images/methodology.png">
-</p>
 
 # Results
 
