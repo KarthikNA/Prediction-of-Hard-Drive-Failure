@@ -12,7 +12,7 @@ Traditional threshold-based algorithms were successful in predicting drive failu
 we saw a shift to learning based algorithms that use Self-Monitoring, Analysis and Reporting Technology (S.M.A.R.T)
 attributes to make predictions. These attributes are different hard drive reliability indicators of an imminent failure.
 In recent times, people have applied insights and learnings obtained from analysing hard drives of one vendor to other
-vendor using tranfer learning techniques[2]. These models either used drives from specific vendors to achieve high
+vendor using transfer learning techniques[2]. These models either used drives from specific vendors to achieve high
 F score[2] or used a subset of data and selected attributes[3]. In this project, we have explored unsupervised and
 supervised learning techniques to predict and analyze hard drive crashes. The objective of using both supervised and
 unsupervised algorithms is to make a comparison between them.
@@ -28,9 +28,19 @@ We have also compared difference machine learning algorithms and their accuracy 
 
 # Dataset
 
+Backblaze owns and operates multiple data centres that have more than a million hard disk drives. 
+They regularly share data about the performance of these drives as well other insights from their datacenters. 
+
 <p align="center">
     <img src="images/backblaze_logo.png">
 </p>
+
+Backblaze takes a snapshot of each operational hard drive daily and the data includes drive’s serial number, model number, disk capacity, 
+a label indicating disk failure, and S.M.A.R.T stats.  
+
+Data for the project was collected from January 1st 2019 to December 31st 2019 and data was in 365 CSV files
+with each representing one day of the year. Each file has 129 columns. 62 S.M.A.R.T statistics is represented both as 
+raw values as well as normalised values(a total of 124 columns). The other columns provide information about the hard disk and the date of the record.
 
 ## S.M.A.R.T Statistics
 
