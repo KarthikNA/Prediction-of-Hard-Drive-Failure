@@ -118,7 +118,7 @@ Data set: Last recorded entry for each drive
 We again applied PCA on these five attributes and reduced them to two attributes.
 
 <p align="center">
-    <img src="images/no_capcity_pca.png">
+    <img src="images/no_capacity_pca.png">
 </p>
 
 We realized that clustering algorithms will not be able to produce distinct clusters based on these five attributes alone. Our results confirmed this. Resampling was also not helpful because the values of the features do not change. Thus, we analyzed the dataset to find another feature that was present across all models. Capacity of the hard disk satisfied this criterion. 
@@ -126,7 +126,7 @@ We realized that clustering algorithms will not be able to produce distinct clus
 Performing PCA on these six attributes and reducing them to two attributes, we got: 
 
 <p align="center">
-    <img src="images/capcity_pca.png">
+    <img src="images/capacity_pca.png">
 </p>
 
 ###### DBSCAN
