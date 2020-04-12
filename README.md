@@ -6,6 +6,7 @@
 </p>
 
 # Introduction
+
 Hard disk failures can be catastrophic in large scale data centers leading to potential loss of all data. To alleviate the
 impact of such failures, companies are actively looking at ways to predict disk failures and take preemptive measures.
 Traditional threshold-based algorithms were successful in predicting drive failures only 3-10% of the times[1]. Thus,
@@ -20,6 +21,24 @@ If companies are able to predict failure of their hard-drives, it would save the
 Admittedly there are cases where the disk failure cannot be predicted, like electricity failure in the server, natural hazard etc. But most of the hardware failure doesn't happen overnight. A hard-disk starts to show reduced performance in some of the attributes before failing. Recognizing these attributes and training a machine learning model to predict failure based on these attributes is the goal of the project.
 
 # Motivation
+
+In the last few years, all companies are moving to the cloud and adopting the 
+Software as a Service(SaaS) model. There is a rise in demand for 
+cloud storage. We have observed the development of Storage Area 
+Networks(SANs) and Content Distribution Networks(CDN) to store and 
+serve the content to everyone. Hard disk drives are the physical 
+devices that store all this information in different formats. 
+Over the years, the cost of memory has decreased significantly, but
+hard disks are still quite expensive. It is essential to know when a 
+particular hard disk may fail so that the data centre predict and 
+order the correct number of replacement hard disks. Analysing the 
+different metrics can also help the data centre determine the optimal operating conditions. 
+Additionally, data centres can identify models that are 
+continuously failing and stop using those particular hard disks to 
+minimise losses. Furthermore, the hard disk manufactures can use the results of this analysis 
+to identify potential faults in the design of hard disk and rectify the same. The proposed 
+machine learning models can effectively predict hard disk failure by evaluating the various 
+S.M.A.R.T statistics.
 
 # Problem Statement
 
@@ -132,7 +151,6 @@ So we decided to limit our scope to last 10 days of a hard disks life for both g
 
 What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. 
 
-
 ##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
 
 > Accuracy:  0.9948433919022154
@@ -143,7 +161,6 @@ What we observed empirically and was confirmed by other researchers is that SMOT
 |1     |0.50     |0.15  |0.23     |
 
 We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on. Results of both the models are described below.
-
 
 ##### Table 3 :  Random Forest results post parameter tuning
 
