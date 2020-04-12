@@ -65,7 +65,7 @@ a label indicating disk failure, and S.M.A.R.T stats.
 Data for the project was collected from January 1st, 2019 to December 31st, 2019 and data was in 365 CSV files
 with each representing one day of the year. Each file has 129 columns. 62 S.M.A.R.T statistics is represented both as 
 raw values as well as normalised values(a total of 124 columns). The other columns provide information about the 
-hard disk and the date of the record. The data is temporal in nature and is more than <b> 10 GB </b> in size. We have 40.7 million
+hard disk and the date of the record. The data is temporal in nature and is more than 10 GB in size. We have 40.7 million
 data points or records in the dataset in total.
 
 The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-test-data.html).
