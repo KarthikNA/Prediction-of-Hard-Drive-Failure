@@ -49,8 +49,8 @@ raw values as well as normalised values(a total of 124 columns). The other colum
 
 The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-test-data.html).
 
-
 # Methodology
+
 The data obtained from Backblaze was aggregated and cleaned using different techniques. 
 Relevant features were determined for further analysis. A combination of supervised and unsupervised learning
 techniques were adopted to predict the failure of a hard disk drive from S.M.A.R.T statistics and 
@@ -59,7 +59,6 @@ cluster hard drives based on S.M.A.R.T statistics. The results were further anal
 <p align="center">
     <img src="images/methodology.png">
 </p>
-
 
 ## Data Cleaning
 
@@ -96,8 +95,17 @@ well for further analysis.
 </p>
 
 
-
 ## Feature Selection
+
+Expert domain knowledge and PCA was used to determine the important features for each of 
+the models. Backblaze suggested using the raw S.M.A.R.T statistic 5, 187, 188, 197 and 198 
+for the analysis purpose[7]. We observed similar suggestions in research papers in the domain. 
+
+PCA was not helpful in the feature selection process. The S.M.A.R.T statistic values measured from 
+working hard drives and failed hard drives is very small and hence makes data in a lower 
+feature space indistinguishable. We observed that running the different machine learning 
+algorithms using the features selected by PCA resulted in worse results than the expert 
+suggested features.
 
 ## Supervised Learning
 
@@ -541,6 +549,7 @@ We suspect that our models are overfit on cases where there were very few hard d
 4. Backblaze. Backblaze hard drive state, 2020.
 5. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
 6. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013)
+7. Andy Klein, "What SMART Stats Tell Us About Hard Drives", October 6, 2016, Available : https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/. [Accessed: April 11, 2020]
 
 ----
 
