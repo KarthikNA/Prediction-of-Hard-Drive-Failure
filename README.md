@@ -537,6 +537,9 @@ Since the Backblaze data already has class labels indicating whether a disk has 
   
 </table>
 
+<p align="center">
+    <img src="images/perf_imp_rf_2.png">
+</p>
 
 # Conclusion
 
