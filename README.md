@@ -142,10 +142,213 @@ What we observed empirically and was confirmed by other researchers is that SMOT
 |0     |1.00     |1.00  |1.00     |
 |1     |0.50     |0.15  |0.23     |
 
-We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on. Results of both the models are described below.
+We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on. Tables 3 and 4 describe the results obtained from the XGBoost Classifier on the validation and testing dataset. These results clearly illustrate that the variance of the models created are low. Table 4 shows results of the Random Forest Classifier on the testing dataset.
 
+##### Table 3 :  XGBoost classifier results on validation dataset post parameter tuning
 
-##### Table 3 :  Random Forest results post parameter tuning
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9919698</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh"> 0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.79</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.88</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9991438</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.91</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.95</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
+  </tr>  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">239</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+ 
+</table>
+
+##### Table 4 :  XGBoost classifier results on testing dataset post parameter tuning
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9851821</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh"> 0.98</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.67</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.80</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9941780</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.74</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.85</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9997273</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-0lax">436</td>
+  </tr>  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">0.9997483</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-0lax">239</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">0.9990636</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+ 
+</table>
+
+<p align="center">
+    <img src="images/perf_imp_rf.png">
+</p>
+
+##### Table 5 :  Random Forest results on testing dataset post parameter tuning
 
 
 <table class="tg">
@@ -246,111 +449,6 @@ We also tried to downsample the good drives data to match the number failed driv
   </tr>
 
 </table>
-
-<p align="center">
-    <img src="images/perf_imp_rf.png">
-</p>
-
-##### Table 4 :  XGBoost classifier results post parameter tuning
-
-<table class="tg">
-  <tr>
-    <th class="tg-0pky">Model</th>
-    <th class="tg-c3ow">Accuracy</th>
-    <th class="tg-c3ow">Label</th>
-    <th class="tg-c3ow">Precision</th>
-    <th class="tg-c3ow">Recall</th>
-    <th class="tg-c3ow">F1</th>
-    <th class="tg-0lax">Support</th>
-  </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9922837</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh"> 0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">74210</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.79</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.88</td>
-    <td class="tg-0lax">2252</td>
-  </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
-    <td class="tg-c3ow" rowspan="2">0.9991438</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">45926</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.95</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.98</td>
-    <td class="tg-0lax">794</td>
-  </tr>
-  
-   <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">436</td>
-  </tr>  
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
-    <td class="tg-c3ow" rowspan="2">1</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">19627</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">239</td>
-  </tr>
-  
-   <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">1</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
-  </tr>
- 
-</table>
-
 
 We took a similar approach for unsupervised learning as well. One important point to note in both the learning algorithms is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data.
 
