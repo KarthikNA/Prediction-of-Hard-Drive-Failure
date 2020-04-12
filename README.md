@@ -162,7 +162,7 @@ Performing PCA on these six attributes and reducing them to two attributes, we g
 ### DBSCAN
 We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
 
-### K-Means
+### k-Means
 Elbow method to find number of clusters:
 
 <p align="center">
@@ -173,7 +173,7 @@ As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know
 
 From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
 
-# What's new in our approach?
+# What's New in Our Approach?
 
 Since the Backblaze data already has class labels indicating whether a disk has failed or not, this dataset is well-suited for supervised learning. All prior notable works focus on building a classifier that can make accurate predictions. We however attempt to solve the same problem using unsupervised learning as well. Although there have been works that make use of unsupervised learning to augment data and tackle the class imbalance problem, to the best of our knowledge, we are the first to apply principles of anamoly detection on the Backblaze dataset to predict failure events.
 
@@ -313,6 +313,9 @@ Since the Backblaze data already has class labels indicating whether a disk has 
 
 </table>
 
+<p align="center">
+    <img src="images/perf_imp_rf.png">
+</p>
 
 ##### Table 4 :  XGBoost classifier results post parameter tuning
 
