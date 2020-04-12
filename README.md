@@ -474,7 +474,53 @@ We took a similar approach for unsupervised learning as well. One important poin
 
 ## Unsupervised Learning
 
-Realizing that the task of hard disk prediction resembles anamoly detection given the nature of the dataset, we used the Isolation Forest anamoly detection algorithm and tuned parameters to create a model that is capable of making good predictions.
+We wanted to analyze if clustering algorithms can result in two clusters – good hard drives and those that failed. 
+
+Model tested for: ST12000NM0007 
+
+Data set: Last recorded entry for each drive
+
+We reduced to two features using PCA, for visualization. 
+
+<p align="center">
+    <img src="images/good_bad_PCA.png">
+</p>
+
+Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, K-Means) to cluster into models based on SMART attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5,187,188,197,198.
+
+Models: ST8000DM002, ST8000NM0055, ST12000NM0007, ST4000DM000
+
+Data set: Last recorded entry for each drive
+
+We again applied PCA on these five attributes and reduced them to two attributes.
+
+<p align="center">
+    <img src="images/no_capacity_pca.png">
+</p>
+
+We realized that clustering algorithms will not be able to produce distinct clusters based on these five attributes alone. Our results confirmed this. Resampling was also not helpful because the values of the features do not change. Thus, we analyzed the dataset to find another feature that was present across all models. Capacity of the hard disk satisfied this criterion. 
+
+Performing PCA on these six attributes and reducing them to two attributes, we got: 
+
+<p align="center">
+    <img src="images/capacity_pca.png">
+</p>
+
+### DBSCAN
+We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
+
+### k-Means
+Elbow method to find number of clusters:
+
+<p align="center">
+    <img src="images/elbow_k_means.png">
+</p>
+
+As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know that there are 4 models. This gave an accuracy of 88.23%.
+
+From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
+
+Since Clustering algorithms did not perform well due to the type of dataset we had, we turned to anomaly detection. We used Isolation Forest anomaly detection algorithm and tuned parameters to create a model that is capable of accurately spotting the failed drives.
 
 <table class="tg">
   <tr>
@@ -574,49 +620,6 @@ Realizing that the task of hard disk prediction resembles anamoly detection give
   
 </table>
 
-We wanted to analyze if clustering algorithms can result in two clusters – good hard drives and those that failed. 
-
-Model tested for: ST12000NM0007 
-Data set: Last recorded entry for each drive
-
-We reduced to two features using PCA, for visualization. 
-
-<p align="center">
-    <img src="images/good_bad_PCA.png">
-</p>
-
-Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, K-Means) to cluster into models based on SMART attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5,187,188,197,198.
-
-Models: ST8000DM002, ST8000NM0055, ST12000NM0007, ST4000DM000
-Data set: Last recorded entry for each drive
-
-We again applied PCA on these five attributes and reduced them to two attributes.
-
-<p align="center">
-    <img src="images/no_capacity_pca.png">
-</p>
-
-We realized that clustering algorithms will not be able to produce distinct clusters based on these five attributes alone. Our results confirmed this. Resampling was also not helpful because the values of the features do not change. Thus, we analyzed the dataset to find another feature that was present across all models. Capacity of the hard disk satisfied this criterion. 
-
-Performing PCA on these six attributes and reducing them to two attributes, we got: 
-
-<p align="center">
-    <img src="images/capacity_pca.png">
-</p>
-
-### DBSCAN
-We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
-
-### k-Means
-Elbow method to find number of clusters:
-
-<p align="center">
-    <img src="images/elbow_k_means.png">
-</p>
-
-As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know that there are 4 models. This gave an accuracy of 88.23%.
-
-From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
 
 # What's New in Our Approach?
 
@@ -627,7 +630,7 @@ Since the Backblaze data already has class labels indicating whether a disk has 
 </p>
 
 # Conclusion
-
+In this project we predicted if a hard disk will fail based on its SMART attributes. We observed that, the number of failed entries is significantly lower. Thus, we resorted to using data augmentation techniques like SMOTE and data resampling. After further analyzing the data we realized that creating a generic model is not feasible as the SMART attributes are not uniform across all manufacturers. Thus, we applied supervised learning classifiers like Random Forest and XGBoost on individual models. The results indicated that these trained classifiers can predict whether a hard disk (of one of the models used in the training) will fail or not. We extended our study to unsupervised clustering methods like DBSCAN and K-Means, and concluded that we cannot use these clustering algorithms because of how our data was spread. Finally, since failures are anomalous behaviors, we also explored anomaly detection using Isolation Forest.
 
 # Future Work
 We suspect that our models are overfit on cases where there were very few hard disk failures i.e. TOSHIBA MQ01ABF050 and ST8000DM002. To overcome the class imbalance problem, we would like to evaluate superior data augmentation techniques that would help reduce model overfitting. We would also like to explore the possibility of creating a generic classifier for all hard disk models and then employ transfer learning to futher fine tune for each model.
