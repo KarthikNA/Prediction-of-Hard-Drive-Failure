@@ -49,7 +49,7 @@ raw values as well as normalised values(a total of 124 columns). The other colum
 
 The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-test-data.html).
 
-# Methodology
+# Methodology and Results
 
 The data obtained from Backblaze was aggregated and cleaned using different techniques. 
 Relevant features were determined for further analysis. A combination of supervised and unsupervised learning
@@ -113,80 +113,24 @@ We approached the task of predicting hard disk failures using Supervised as well
 
 The dataset used for both the algorithms is the Backblaze dataset which composes of S.M.A.R.T attributes corresponding to the hard drives. Since the meaning and range of values of the same  S.M.A.R.T attributes can change across models, we decided to create a separate classifier for predicting failures of each hard disk model.
 
-One of the major challenges we faced was the class imbalance problem where we have significantly less number of records for failed disks when compared to those that did not fail. This is primarily because failure of a hard disk is a rare event given its life span. The label for the failed disk is marked as 1 only on the day of its failure and then removed from the dataset.
+One of the major challenges we faced was the class imbalance problem where we have significantly less number of records for failed disks when compared to those that did not fail. This is primarily because failure of a hard disk is a rare event given its life span. Only 0.000585% of the dataset consisted of failed records. The label for the failed disk is marked as 1 only on the day of its failure and remains 0 on all other days.
 
-The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for last 10 days of a failed hard disk to 1. Even with this approach, we had 2946617 rows for disks that did not fail and 1725 rows for those that failed. 
+The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
 
-As shown in table 1, lthough accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a  possible failure event. 
-
-So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failaing drives -  1) SMOTE and 2) Random resampling with replacement.
-
-What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on.
-
-We took a similar approach for unsupervised learning as well. Realizing that the task of hard disk prediction resembles anamoly detection giveen the nature of the dataset, we used the Isolation Forest anamoly detecttion algorithm and tuned parameters to create a model that is capable of making good predictions.
-
-One important point to note in both the learning algorithms is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data.
-
-## Unsupervised Learning
-
-We wanted to analyze if clustering algorithms can result in two clusters – good hard drives and those that failed. 
-
-Model tested for: ST12000NM0007 
-Data set: Last recorded entry for each drive
-
-We reduced to two features using PCA, for visualization. 
-
-<p align="center">
-    <img src="images/good_bad_PCA.png">
-</p>
-
-Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, K-Means) to cluster into models based on SMART attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5,187,188,197,198.
-
-Models: ST8000DM002, ST8000NM0055, ST12000NM0007, ST4000DM000
-Data set: Last recorded entry for each drive
-
-We again applied PCA on these five attributes and reduced them to two attributes.
-
-<p align="center">
-    <img src="images/no_capacity_pca.png">
-</p>
-
-We realized that clustering algorithms will not be able to produce distinct clusters based on these five attributes alone. Our results confirmed this. Resampling was also not helpful because the values of the features do not change. Thus, we analyzed the dataset to find another feature that was present across all models. Capacity of the hard disk satisfied this criterion. 
-
-Performing PCA on these six attributes and reducing them to two attributes, we got: 
-
-<p align="center">
-    <img src="images/capacity_pca.png">
-</p>
-
-### DBSCAN
-We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
-
-### k-Means
-Elbow method to find number of clusters:
-
-<p align="center">
-    <img src="images/elbow_k_means.png">
-</p>
-
-As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know that there are 4 models. This gave an accuracy of 88.23%.
-
-From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
-
-# What's New in Our Approach?
-
-Since the Backblaze data already has class labels indicating whether a disk has failed or not, this dataset is well-suited for supervised learning. All prior notable works focus on building a classifier that can make accurate predictions. We however attempt to solve the same problem using unsupervised learning as well. Although there have been works that make use of unsupervised learning to augment data and tackle the class imbalance problem, to the best of our knowledge, we are the first to apply principles of anamoly detection on the Backblaze dataset to predict failure events.
-
-# Results
+As shown in table 1 below, lthough accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a  possible failure event. 
 
 ##### Table 1 : Random Forest results on original dataset for the 1st quarter of 2019
 
->Accuracy:  0.9994109693116142
+> Accuracy:  0.9994109693116142
 
 |labels|precision|recall|f1-score | 
 |------|---------|------|---------|
 |0     |1.00     |1.00  |1.00     |
 |1     |0.47     |0.05  |0.08     |
+
+So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failaing drives -  1) SMOTE and 2) Random resampling with replacement.
+
+What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. 
 
 
 ##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
@@ -198,21 +142,11 @@ Since the Backblaze data already has class labels indicating whether a disk has 
 |0     |1.00     |1.00  |1.00     |
 |1     |0.50     |0.15  |0.23     |
 
+We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on. Results of both the models are described below.
+
+
 ##### Table 3 :  Random Forest results post parameter tuning
 
-
-<!-- Parameters:
-```
-{
-    'n_estimators': 2000, 
-    'min_samples_split': 5, 
-    'min_samples_leaf': 4, 
-    'max_features': 'auto', 
-    'max_depth': 40, 
-    'criterion': 'entropy', 
-    'bootstrap': True
-}
-``` -->
 
 <table class="tg">
   <tr>
@@ -319,23 +253,6 @@ Since the Backblaze data already has class labels indicating whether a disk has 
 
 ##### Table 4 :  XGBoost classifier results post parameter tuning
 
-<!-- Paramteres:
-```
-{ 
-    learning_rate: 0.2,
-    n_estimators: 1251,
-    max_depth: 3,
-    min_child_weight: 3,
-    gamma: 0.1,
-    reg_alpha: 0.01,
-    subsample: 0.8,
-    colsample_bytree: 0.8,
-    objective: 'binary:logistic',
-    scale_pos_weight: 1,
-    seed: 27)
-} 
-``` -->
-
 <table class="tg">
   <tr>
     <th class="tg-0pky">Model</th>
@@ -435,9 +352,11 @@ Since the Backblaze data already has class labels indicating whether a disk has 
 </table>
 
 
-### Isolation Forest
+We took a similar approach for unsupervised learning as well. One important point to note in both the learning algorithms is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data.
 
+## Unsupervised Learning
 
+Realizing that the task of hard disk prediction resembles anamoly detection given the nature of the dataset, we used the Isolation Forest anamoly detection algorithm and tuned parameters to create a model that is capable of making good predictions.
 
 <table class="tg">
   <tr>
@@ -536,6 +455,54 @@ Since the Backblaze data already has class labels indicating whether a disk has 
   </tr>
   
 </table>
+
+We wanted to analyze if clustering algorithms can result in two clusters – good hard drives and those that failed. 
+
+Model tested for: ST12000NM0007 
+Data set: Last recorded entry for each drive
+
+We reduced to two features using PCA, for visualization. 
+
+<p align="center">
+    <img src="images/good_bad_PCA.png">
+</p>
+
+Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, K-Means) to cluster into models based on SMART attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5,187,188,197,198.
+
+Models: ST8000DM002, ST8000NM0055, ST12000NM0007, ST4000DM000
+Data set: Last recorded entry for each drive
+
+We again applied PCA on these five attributes and reduced them to two attributes.
+
+<p align="center">
+    <img src="images/no_capacity_pca.png">
+</p>
+
+We realized that clustering algorithms will not be able to produce distinct clusters based on these five attributes alone. Our results confirmed this. Resampling was also not helpful because the values of the features do not change. Thus, we analyzed the dataset to find another feature that was present across all models. Capacity of the hard disk satisfied this criterion. 
+
+Performing PCA on these six attributes and reducing them to two attributes, we got: 
+
+<p align="center">
+    <img src="images/capacity_pca.png">
+</p>
+
+### DBSCAN
+We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
+
+### k-Means
+Elbow method to find number of clusters:
+
+<p align="center">
+    <img src="images/elbow_k_means.png">
+</p>
+
+As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know that there are 4 models. This gave an accuracy of 88.23%.
+
+From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
+
+# What's New in Our Approach?
+
+Since the Backblaze data already has class labels indicating whether a disk has failed or not, this dataset is well-suited for supervised learning. All prior notable works focus on building a classifier that can make accurate predictions. We however attempt to solve the same problem using unsupervised learning as well. Although there have been works that make use of unsupervised learning to augment data and tackle the class imbalance problem, to the best of our knowledge, we are the first to apply principles of anamoly detection on the Backblaze dataset to predict failure events.
 
 <p align="center">
     <img src="images/perf_imp_rf_2.png">
