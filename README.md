@@ -86,6 +86,15 @@ The image below shows the five hard disks we shortlisted for further analysis.
     <img src="images/feature_reduction.png">
 </p>
 
+We created a subset of the dataset by only selecting the records with the model ST12000NM0007. 
+We first dropped the normalised S.M.A.R.T statistics in the analysis since critical information 
+about the S.M.A.R.T statistic was lost during the normalisation process. Additionally, 
+the same information was captured by the same raw S.M.A.R.T statistics. Then we dropped the 
+columns with only NaN values or missing values. Lastly, we eliminated all columns that had the 
+same value for all the records since it would not help in any manner for the machine learning 
+algorithm. We applied the same procedure to obtain subsets of data for the other four models as 
+well for further analysis.
+
 ## Feature Selection
 
 ## Supervised Learning
