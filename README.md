@@ -536,86 +536,86 @@ Since Clustering algorithms did not perform well due to the type of dataset we h
   
   <tr>
     <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9997122</td>
+    <td class="tg-c3ow" rowspan="2"> 0.8691</td>
     <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">74210</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">0.88</td>
+    <td class="tg-baqh">0.93</td>
+    <td class="tg-0lax">7425</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">2252</td>
+    <td class="tg-baqh">0.12</td>
+    <td class="tg-baqh">0.52</td>
+    <td class="tg-baqh">0.19</td>
+    <td class="tg-0lax">227</td>
   </tr>
   
   <tr>
     <td class="tg-0pky" rowspan="2">ST4000DM000</td>
-    <td class="tg-c3ow" rowspan="2">0.9999357</td>
+    <td class="tg-c3ow" rowspan="2">0.6331</td>
     <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">0.64</td>
+    <td class="tg-baqh">0.77</td>
     <td class="tg-0lax">45926</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.01</td>
+    <td class="tg-baqh">0.13</td>
+    <td class="tg-baqh">0.01</td>
     <td class="tg-0lax">794</td>
   </tr>
   
   <tr>
     <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2"> 1</td>
+    <td class="tg-c3ow" rowspan="2">0.215792</td>
     <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">0.54</td>
+    <td class="tg-baqh">0.70</td>
     <td class="tg-0lax">28906</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.01</td>
+    <td class="tg-baqh">0.24</td>
+    <td class="tg-baqh">0.01</td>
     <td class="tg-0lax">436</td>
   </tr>
   
   <tr>
     <td class="tg-0pky" rowspan="2">ST8000DM002</td>
-    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-c3ow" rowspan="2">0.1331276</td>
     <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">0.41</td>
+    <td class="tg-baqh">0.57</td>
     <td class="tg-0lax">19627</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.00</td>
+    <td class="tg-baqh">0.20</td>
+    <td class="tg-baqh">0.01</td>
     <td class="tg-0lax">239</td>
   </tr>  
   
   <tr>
     <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">0.9990636</td>
+    <td class="tg-c3ow" rowspan="2">0.48408</td>
     <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.82</td>
+    <td class="tg-baqh">0.51</td>
+    <td class="tg-baqh">0.63</td>
     <td class="tg-0lax">912</td>
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.11</td>
+    <td class="tg-baqh">0.35</td>
+    <td class="tg-baqh">0.17</td>
     <td class="tg-0lax">156</td>
   </tr>
   
