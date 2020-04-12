@@ -394,7 +394,6 @@ We also tried to downsample the good drives data to match the number failed driv
     <td class="tg-baqh">0.99</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.88</td>
     <td class="tg-0lax">2252</td>
   </tr>
   
@@ -409,7 +408,6 @@ We also tried to downsample the good drives data to match the number failed driv
   </tr>
   <tr>
     <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.95</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
     <td class="tg-baqh">1</td>
@@ -522,6 +520,7 @@ From above, it is evident that clustering algorithms cannot be used for predicti
 
 Since Clustering algorithms did not perform well due to the type of dataset we had, we turned to anomaly detection. We used Isolation Forest anomaly detection algorithm and tuned parameters to create a model that is capable of accurately spotting the failed drives.
 
+### Table 6 : Isolation Forest Results
 <table class="tg">
   <tr>
     <th class="tg-0pky">Model</th>
