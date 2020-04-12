@@ -512,9 +512,7 @@ Since the Backblaze data already has class labels indicating whether a disk has 
 
 
 # Future Work
-We suspect that our models are overfit on cases where there were very few hard disk failures i.e. TOSHIBA MQ01ABF050 and ST8000DM002. 
-In future we hope to train on a larger data set, thereby reducing over fitting. 
-We would like to explore the possibility of creating a generic classifier for all hard disk models. 
+We suspect that our models are overfit on cases where there were very few hard disk failures i.e. TOSHIBA MQ01ABF050 and ST8000DM002. To overcome the class imbalance problem, we would like to evaluate superior data augmentation techniques that would help reduce model overfitting. We would also like to explore the possibility of creating a generic classifier for all hard disk models and then employ transfer learning to futher fine tune for each model.
 
 
 # References
