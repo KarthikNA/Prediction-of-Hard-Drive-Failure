@@ -63,9 +63,20 @@ cluster hard drives based on S.M.A.R.T statistics. The results were further anal
 
 ## Data Cleaning
 
+We observed that different hard disks showed significantly different behaviour at the time 
+of failure. Additionally, we identified different S.M.A.R.T statistics were needed to identify 
+the failure of each hard disk model. Thus, we selected the hard disk models that failed the most 
+in the dataset. Thus, we were concentrating the predicting the hard disks that failed the most. 
+We determined the top 5 hard disks that failed the maximum number of times in the dataset.
+
 <p align="center">
     <img src="images/hdd_model_selection.png">
 </p>
+
+We observed that ST12000NM0007 was the most used hard disk in the dataset and at the same 
+time, the one that failed the most in the dataset. It had more than twice the number of 
+failures than any other hard disk in the dataset. 
+The image below shows the five hard disks we shortlisted for further analysis.
 
 <p align="center">
     <img src="images/hard_disks.png">
@@ -129,9 +140,10 @@ Performing PCA on these six attributes and reducing them to two attributes, we g
     <img src="images/capacity_pca.png">
 </p>
 
-###### DBSCAN
+### DBSCAN
 We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
-###### K-Means
+
+### K-Means
 Elbow method to find number of clusters:
 
 <p align="center">
