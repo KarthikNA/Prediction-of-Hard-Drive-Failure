@@ -622,14 +622,15 @@ Since Clustering algorithms did not perform well due to the type of dataset we h
   
 </table>
 
+<p align="center">
+    <img src="images/perf_imp_rf_2.png">
+</p>
+
 Thus, for the given dataset from our analysis, it is best to use supervised learning techniques like Random Forest (bagging) and XGBoost (boosting). In these methods, the data points even if extremely similar are accurately classified using sufficient tree levels and number of features to split.
 
 # What's New in Our Approach?
 Through extensive parameters tuning and efficient resampling of data set, we are able to achieve better model performance than existing works. Also, as the Backblaze data set has class labels it is well-suited for supervised learning. Thus, all prior notable works focus on building a classifier that can make accurate predictions. In addition to implementing supervised learning techniques, we analyze if the problem of predicting hard disk failure can be solved using unsupervised methods. Earlier works mainly use unsupervised learning to augment data and tackle the class imbalance problem. To the best of our knowledge, we are the first to apply and assess the efficiency of using anomaly detection on the Backblaze dataset to predict failure events.
 
-<p align="center">
-    <img src="images/perf_imp_rf_2.png">
-</p>
 
 # Conclusion
 In this project we predicted if a hard disk will fail based on its SMART attributes. We observed that, the number of failed entries is significantly lower. Thus, we resorted to using data augmentation techniques like SMOTE and data resampling. After further analyzing the data we realized that creating a generic model is not feasible as the SMART attributes are not uniform across all manufacturers. Thus, we applied supervised learning classifiers like Random Forest and XGBoost on individual models. The results indicated that these trained classifiers can predict whether a hard disk (of one of the models used in the training) will fail or not. We extended our study to unsupervised clustering methods like DBSCAN and K-Means, and concluded that we cannot use these clustering algorithms because of how our data was spread. Finally, since failures are anomalous behaviors, we also explored anomaly detection using Isolation Forest.
