@@ -1,6 +1,7 @@
 
 #### CS 7461 Project 21: [Akarshit Wal](https://github.com/Akarshit), [Gnanaguruparan Aishvaryaadevi](https://github.com/Aishvaryaa), [Karthik Nama Anil](https://github.com/KarthikNA), [Parth Tamane](https://github.com/parthv21), [Vaishnavi Kannan](https://github.com/Vaishnavik22)  
 
+
 <p align="center">
     <img src="images/cover_img.png">
 </p>
@@ -520,7 +521,7 @@ As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know
 
 From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
 
-Since Clustering algorithms did not perform well due to the type of dataset we had, we turned to anomaly detection. We used Isolation Forest anomaly detection algorithm and tuned parameters to create a model that is capable of accurately spotting the failed drives.
+Since Clustering algorithms did not perform well due to the type of dataset we had, we turned to anomaly detection. We used Isolation Forest anomaly detection algorithm. However, since this technique also relies on having distinct features for the failed data, which is not true for our dataset, even the tuned models could not accurately identify the failed drives. 
 
 ### Table 6 : Isolation Forest Results
 <table class="tg">
@@ -621,10 +622,10 @@ Since Clustering algorithms did not perform well due to the type of dataset we h
   
 </table>
 
+Thus, for the given dataset from our analysis, it is best to use supervised learning techniques like Random Forest (bagging) and XGBoost (boosting). In these methods, the data points even if extremely similar are accurately classified using sufficient tree levels and number of features to split.
 
 # What's New in Our Approach?
-
-Since the Backblaze data already has class labels indicating whether a disk has failed or not, this dataset is well-suited for supervised learning. All prior notable works focus on building a classifier that can make accurate predictions. We however attempt to solve the same problem using unsupervised learning as well. Although there have been works that make use of unsupervised learning to augment data and tackle the class imbalance problem, to the best of our knowledge, we are the first to apply principles of anamoly detection on the Backblaze dataset to predict failure events.
+Through extensive parameters tuning and efficient resampling of data set, we are able to achieve better model performance than existing works. Also, as the Backblaze data set has class labels it is well-suited for supervised learning. Thus, all prior notable works focus on building a classifier that can make accurate predictions. In addition to implementing supervised learning techniques, we analyze if the problem of predicting hard disk failure can be solved using unsupervised methods. Earlier works mainly use unsupervised learning to augment data and tackle the class imbalance problem. To the best of our knowledge, we are the first to apply and assess the efficiency of using anomaly detection on the Backblaze dataset to predict failure events.
 
 <p align="center">
     <img src="images/perf_imp_rf_2.png">
@@ -659,4 +660,5 @@ Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-tes
 [List of Public SMART Attributes](http://www.t13.org/Documents/UploadedDocuments/docs2005/e05173r0-ACS-SMARTAttributes_List.pdf)
 
 [Western Digital SMART attributes](https://sourceforge.net/p/smartmontools/mailman/message/23829511/)
+
 
