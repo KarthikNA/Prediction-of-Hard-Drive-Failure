@@ -102,11 +102,12 @@ well for further analysis.
 
 Expert domain knowledge and PCA was used to determine the important features for each of 
 the models. Backblaze suggested using the raw S.M.A.R.T statistic 5, 187, 188, 197 and 198 
-for the analysis purpose[9]. We observed similar suggestions in research papers in the domain. 
+for the analysis purpose[9]. We observed similar suggestions in research papers in the domain. Furthermore, we included 
+the other columns that were remaining after the data cleaning process. 
 
-PCA was not helpful in the feature selection process. The S.M.A.R.T statistic values measured from 
+The variation in S.M.A.R.T statistic values obtained from 
 working hard drives and failed hard drives is very small and hence makes data in a lower 
-feature space indistinguishable. We observed that running the different machine learning 
+feature space indistinguishable. thus, PCA was not helpful in the feature selection process. We observed that running the different machine learning 
 algorithms using the features selected by PCA resulted in worse results than the expert 
 suggested features.
 
