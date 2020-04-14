@@ -477,7 +477,7 @@ We reduced to two features using PCA, for visualization.
     <img src="images/good_bad_PCA.png">
 </p>
 
-Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, k-Means) to cluster into models based on S.M.A.R.T attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5,187,188,197,198.
+Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, k-Means) to cluster into models based on S.M.A.R.T attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5, 187, 188, 197, 198.
 
 Models: ST8000DM002, ST8000NM0055, ST12000NM0007, ST4000DM000
 
