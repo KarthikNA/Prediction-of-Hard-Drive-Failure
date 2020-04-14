@@ -465,7 +465,9 @@ Tables 4 and 5 describe the results obtained from the XGBoost Classifier on the 
 
 ## Unsupervised Learning
 
-We wanted to analyze if clustering algorithms can result in two clusters – good hard drives and those that failed. 
+- Seperation of Good vs Failed Disk
+
+We wanted to analyze if clustering algorithms can result in two clusters – good hard drives and those that failed. This would help in identifying if a disk will fail based on it's cluster membership.
 
 Model tested for: ST12000NM0007 
 
@@ -477,7 +479,14 @@ We reduced to two features using PCA, for visualization.
     <img src="images/good_bad_PCA.png">
 </p>
 
-Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. Resampling the dataset did not help. So we decided to use clustering algorithms (DBSCAN, k-Means) to cluster into models based on S.M.A.R.T attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5, 187, 188, 197, 198.
+Since there are no distinct clusters of good and failed drives, applying K-Means to this data set did not give accurate results. 
+
+- Hard Disk Model Detection
+
+
+Another thing we explored was identification of the model number based on the drive attributes. This would help in identifying a new hard disk that was similar to a previously failed hard disk. This would mean that whatever problems were causing the base hard disk to fail would be the likely issues that would cause this new hard disk to fail. 
+
+We used clustering algorithms (DBSCAN, k-Means) to cluster into models based on S.M.A.R.T attributes. As stated earlier, since many SMART attributes do not have uniform meaning across manufacturers, we decided to use only those attributes that are present across all models. These are SMART attribute numbers 5, 187, 188, 197, 198.
 
 Models: ST8000DM002, ST8000NM0055, ST12000NM0007, ST4000DM000
 
@@ -497,21 +506,22 @@ Performing PCA on these six attributes and reducing them to two attributes, we g
     <img src="images/capacity_pca.png">
 </p>
 
-### DBSCAN
-We used grid search on the minimum number of neighbors in the DBSCAN algorithm. This gave an accuracy of 83.87%
+1. DBSCAN
+After using grid search on the minimum number of neighbors in the DBSCAN algorithm, we got an accuracy of 83.87% in predicting the model number of a hard disk.
 
-### k-Means
-Elbow method to find number of clusters:
+2. K-Means
+Using the elbow method to find number of clusters, as observed in PCA, we got k=3. But we ran the model for k=4, since we know that there are 4 models. This gave an accuracy of 88.23%.
 
 <p align="center">
     <img src="images/elbow_k_means.png">
 </p>
 
-As observed in PCA, the elbow method gave k=3. But we ran for k=4, since we know that there are 4 models. This gave an accuracy of 88.23%.
 
-From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is.
+From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity it could be used to predict which model a hard drive is most similar to.
 
-Since Clustering algorithms did not perform well due to the type of dataset we had, we turned to anomaly detection. We used Isolation Forest anomaly detection algorithm. However, since this technique also relies on having distinct features for the failed data, which is not true for our dataset, even the tuned models could not accurately identify the failed drives. 
+- Anomaly Detection
+
+Since clustering algorithms did not perform well for failure classification, due to the type of dataset we had, we turned to anomaly detection. We used Isolation Forest anomaly detection algorithm. However, since this technique also relies on having distinct features for the failed data, which is not true for our dataset, even the tuned models could not accurately identify the failed drives. 
 
 ### Table 6 : Isolation Forest Results
 <table class="tg">
