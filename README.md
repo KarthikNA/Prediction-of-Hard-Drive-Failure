@@ -120,7 +120,9 @@ One of the major challenges we faced was the class imbalance problem where we ha
 
 The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
 
-As shown in table 1 below, although accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a possible failure event. 
+One important point to note is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data. This ensures that we train on past data to predict future data.
+
+As shown in Table 1 below, although accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a possible failure event. 
 
 ##### Table 1 : Random Forest results on original dataset for the 1st quarter of 2019
 
@@ -131,7 +133,8 @@ As shown in table 1 below, although accuracy of prediction in this case was high
 |0     |1.00     |1.00  |1.00     |
 |1     |0.47     |0.05  |0.08     |
 
-So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement.
+So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
+
 
 What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large.[8] So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve better results as shown in Table 2. 
 
@@ -153,213 +156,9 @@ In the following graph, we can see how the performance improved as we transforme
 </p>
 
 
+Table 3 shows results of the Random Forest Classifier on the testing dataset.
 
-Tables 3 and 4 describe the results obtained from the XGBoost Classifier on the validation and testing dataset. These results clearly illustrate that the variance of the models created are low. 
-
-##### Table 3 :  XGBoost classifier results on validation dataset post parameter tuning
-
-<table class="tg">
-  <tr>
-    <th class="tg-0pky">Model</th>
-    <th class="tg-c3ow">Accuracy</th>
-    <th class="tg-c3ow">Label</th>
-    <th class="tg-c3ow">Precision</th>
-    <th class="tg-c3ow">Recall</th>
-    <th class="tg-c3ow">F1</th>
-    <th class="tg-0lax">Support</th>
-  </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9919698</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh"> 0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">74210</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.79</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.88</td>
-    <td class="tg-0lax">2252</td>
-  </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
-    <td class="tg-c3ow" rowspan="2">0.9991438</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">45926</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.91</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.95</td>
-    <td class="tg-0lax">794</td>
-  </tr>
-  
-   <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">436</td>
-  </tr>  
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
-    <td class="tg-c3ow" rowspan="2">1</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">19627</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">239</td>
-  </tr>
-  
-   <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">1</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
-  </tr>
- 
-</table>
-
-##### Table 4 :  XGBoost classifier results on testing dataset post parameter tuning
-
-<table class="tg">
-  <tr>
-    <th class="tg-0pky">Model</th>
-    <th class="tg-c3ow">Accuracy</th>
-    <th class="tg-c3ow">Label</th>
-    <th class="tg-c3ow">Precision</th>
-    <th class="tg-c3ow">Recall</th>
-    <th class="tg-c3ow">F1</th>
-    <th class="tg-0lax">Support</th>
-  </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9851821</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh"> 0.98</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-0lax">74210</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.67</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.80</td>
-    <td class="tg-0lax">2252</td>
-  </tr>
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
-    <td class="tg-c3ow" rowspan="2">0.9941780</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">45926</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.74</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.85</td>
-    <td class="tg-0lax">794</td>
-  </tr>
-  
-   <tr>
-    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
-    <td class="tg-c3ow" rowspan="2"> 0.9997273</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">28906</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.98</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-0lax">436</td>
-  </tr>  
-  
-  <tr>
-    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
-    <td class="tg-c3ow" rowspan="2">0.9997483</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">19627</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.98</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-0lax">239</td>
-  </tr>
-  
-   <tr>
-    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
-    <td class="tg-c3ow" rowspan="2">0.9990636</td>
-    <td class="tg-baqh">0</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">912</td>
-  </tr>
-  <tr>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">0.99</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-baqh">1</td>
-    <td class="tg-0lax">156</td>
-  </tr>
- 
-</table>
-
-
-Table 5 shows results of the Random Forest Classifier on the testing dataset.
-
-##### Table 5 :  Random Forest results on testing dataset post parameter tuning
+##### Table 3 :  Random Forest results on testing dataset post parameter tuning
 
 
 <table class="tg">
@@ -461,7 +260,208 @@ Table 5 shows results of the Random Forest Classifier on the testing dataset.
 
 </table>
 
-We took a similar approach for unsupervised learning as well. One important point to note in both the learning algorithms is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data.
+Tables 4 and 5 describe the results obtained from the XGBoost Classifier on the validation and testing dataset. These results clearly illustrate that the variance of the models created are low. 
+
+##### Table 4 :  XGBoost classifier results on validation dataset post parameter tuning
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9919698</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh"> 0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.79</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.88</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9991438</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.91</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.95</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9999659</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">436</td>
+  </tr>  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">239</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">1</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+ 
+</table>
+
+##### Table 5 :  XGBoost classifier results on testing dataset post parameter tuning
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Model</th>
+    <th class="tg-c3ow">Accuracy</th>
+    <th class="tg-c3ow">Label</th>
+    <th class="tg-c3ow">Precision</th>
+    <th class="tg-c3ow">Recall</th>
+    <th class="tg-c3ow">F1</th>
+    <th class="tg-0lax">Support</th>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST12000NM0007</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9851821</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh"> 0.98</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-0lax">74210</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.67</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.80</td>
+    <td class="tg-0lax">2252</td>
+  </tr>
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST4000DM000</td>
+    <td class="tg-c3ow" rowspan="2">0.9941780</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">45926</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.74</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.85</td>
+    <td class="tg-0lax">794</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">ST8000NM0055</td>
+    <td class="tg-c3ow" rowspan="2"> 0.9997273</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">28906</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-0lax">436</td>
+  </tr>  
+  
+  <tr>
+    <td class="tg-0pky" rowspan="2">ST8000DM002</td>
+    <td class="tg-c3ow" rowspan="2">0.9997483</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">19627</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.98</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-0lax">239</td>
+  </tr>
+  
+   <tr>
+    <td class="tg-0pky" rowspan="2">TOSHIBA MQ01ABF050 </td>
+    <td class="tg-c3ow" rowspan="2">0.9990636</td>
+    <td class="tg-baqh">0</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">912</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">0.99</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-baqh">1</td>
+    <td class="tg-0lax">156</td>
+  </tr>
+ 
+</table>
+
 
 ## Unsupervised Learning
 
@@ -621,13 +621,11 @@ Thus, for the given dataset from our analysis, it is best to use supervised lear
 # What's New in Our Approach?
 Through extensive parameters tuning and efficient resampling of data set, we are able to achieve better model performance than existing works. Also, as the Backblaze data set has class labels it is well-suited for supervised learning. Thus, all prior notable works focus on building a classifier that can make accurate predictions. In addition to implementing supervised learning techniques, we analyze if the problem of predicting hard disk failure can be solved using unsupervised methods. Earlier works mainly use unsupervised learning to augment data and tackle the class imbalance problem. To the best of our knowledge, we are the first to apply and assess the efficiency of using anomaly detection on the Backblaze dataset to predict failure events.
 
-
 # Conclusion
 In this project we predicted if a hard disk will fail based on its SMART attributes. We observed that, the number of failed entries is significantly lower. Thus, we resorted to using data augmentation techniques like SMOTE and data resampling. After further analyzing the data we realized that creating a generic model is not feasible as the S.M.A.R.T attributes are not uniform across all manufacturers. Thus, we applied supervised learning classifiers like Random Forest and XGBoost on individual models. The results indicated that these trained classifiers can predict whether a hard disk (of one of the models used in the training) will fail or not. Random forest algorithm gave a F1 score of 1 for all the models. We extended our study to unsupervised clustering methods like DBSCAN and K-Means, and concluded that we cannot use these clustering algorithms because of how our data was spread. Finally, since failures are anomalous behaviors, we also explored anomaly detection using Isolation Forest.
 
 # Future Work
-We suspect that our models are overfit on cases where there were very few hard disk failures i.e. TOSHIBA MQ01ABF050 and ST8000DM002. To overcome the class imbalance problem, we would like to evaluate superior data augmentation techniques that would help reduce model overfitting. We would also like to explore the possibility of creating a generic classifier for all hard disk models and then employ transfer learning to futher fine tune for each model.
-
+We suspect that our models are overfit on cases where there were very few hard disk failures i.e. TOSHIBA MQ01ABF050 and ST8000DM002. Hence, to overcome the class imbalance problem, we would like to evaluate superior data augmentation techniques that would help reduce model overfitting. We would also like to explore the possibility of creating a generic classifier for all hard disk models and then employ transfer learning to futher fine tune for each model.
 
 # References
 1. C. Xu, G. Wang, X. Liu, D. Guo, and T. Liu. Health status assessment and failure prediction for hard drives with recurrent neural networks. IEEE Transactions on Computers, 65(11):3502–3508, Nov 2016.
