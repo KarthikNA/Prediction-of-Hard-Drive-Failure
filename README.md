@@ -120,7 +120,7 @@ One of the major challenges we faced was the class imbalance problem where we ha
 
 The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
 
-As shown in table 1 below, lthough accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a  possible failure event. 
+As shown in table 1 below, although accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a possible failure event. 
 
 ##### Table 1 : Random Forest results on original dataset for the 1st quarter of 2019
 
@@ -131,9 +131,9 @@ As shown in table 1 below, lthough accuracy of prediction in this case was high,
 |0     |1.00     |1.00  |1.00     |
 |1     |0.47     |0.05  |0.08     |
 
-So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failaing drives -  1) SMOTE and 2) Random resampling with replacement.
+So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement.
 
-What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[8].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. 
+What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large.[8] So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve better results as shown in Table 2. 
 
 ##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
 
@@ -144,7 +144,17 @@ What we observed empirically and was confirmed by other researchers is that SMOT
 |0     |1.00     |1.00  |1.00     |
 |1     |0.50     |0.15  |0.23     |
 
-We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on. Tables 3 and 4 describe the results obtained from the XGBoost Classifier on the validation and testing dataset. These results clearly illustrate that the variance of the models created are low. Table 4 shows results of the Random Forest Classifier on the testing dataset.
+We also tried to downsample the good drives data to match the number failed drive records, but this produced too less training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, f1 score was used as the metric to tune the model on. 
+
+In the following graph, we can see how the performance improved as we transformed the dataset and tuned the model.
+
+<p align="center">
+    <img src="images/perf_imp_rf.png">
+</p>
+
+
+
+Tables 3 and 4 describe the results obtained from the XGBoost Classifier on the validation and testing dataset. These results clearly illustrate that the variance of the models created are low. 
 
 ##### Table 3 :  XGBoost classifier results on validation dataset post parameter tuning
 
@@ -346,9 +356,8 @@ We also tried to downsample the good drives data to match the number failed driv
  
 </table>
 
-<p align="center">
-    <img src="images/perf_imp_rf.png">
-</p>
+
+Table 5 shows results of the Random Forest Classifier on the testing dataset.
 
 ##### Table 5 :  Random Forest results on testing dataset post parameter tuning
 
