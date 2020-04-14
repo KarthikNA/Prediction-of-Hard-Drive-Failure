@@ -8,43 +8,20 @@
 
 # Introduction
 
-Hard disk failures can be catastrophic in large scale data centers leading to potential loss of all data. To alleviate the
-impact of such failures, companies are actively looking at ways to predict disk failures and take preemptive measures.
-Traditional threshold-based algorithms were successful in predicting drive failures only 3-10% of the times[1]. Thus,
-we saw a shift to learning based algorithms that use Self-Monitoring, Analysis and Reporting Technology (S.M.A.R.T)
-attributes to make predictions. These attributes are different hard drive reliability indicators of an imminent failure.
-In recent times, people have applied insights and learnings obtained from analysing hard drives of one vendor to other
-vendor using transfer learning techniques[2]. These models either used drives from specific vendors to achieve high
-F score[2] or used a subset of data and selected attributes[3]. In this project, we have explored unsupervised and
-supervised learning techniques to predict and analyze hard drive crashes. The objective of using both supervised and
-unsupervised algorithms is to make a comparison between them.
-If companies are able to predict failure of their hard-drives, it would save them tons of money and help them gain customer trust.
-Admittedly there are cases where the disk failure cannot be predicted, like electricity failure in the server, natural hazard etc. But most of the hardware failure doesn't happen overnight. A hard-disk starts to show reduced performance in some of the attributes before failing. Recognizing these attributes and training a machine learning model to predict failure based on these attributes is the goal of the project.
+Hard disk failures can be catastrophic in large scale data centers leading to potential loss of all data. To alleviate the impact of such failures, companies are actively looking at ways to predict disk failures and take preemptive measures. Our project explores unsupervised and supervised learning techniques to predict and analyze hard drive crashes. The objective of using both supervised and unsupervised algorithms is to make a comparison between them. If companies are able to predict failure of their hard-drives, it would save tons of money and help them gain customer trust. Admittedly there are cases where the disk failure cannot be predicted, like electricity failure in the server, natural hazard etc. But most of the hardware failures don't happen overnight. A hard-disk starts to show reduced performance in some of the attributes before failing. Recognizing these attributes and training a machine learning model to predict failure based on these attributes is the main goal of our project.
 
 # Motivation
 
-In the last few years, all companies are moving to the cloud and adopting the 
-Software as a Service(SaaS) model. There is a rise in demand for 
-cloud storage. We have observed the development of Storage Area 
-Networks(SANs) and Content Distribution Networks(CDN) to store and 
-serve the content to everyone. Hard disk drives are the physical 
-devices that store all this information in different formats. 
-Over the years, the cost of memory has decreased significantly, but
-hard disks are still quite expensive. It is essential to know when a 
-particular hard disk may fail so that the data centre predict and 
-order the correct number of replacement hard disks. Analysing the 
-different metrics can also help the data centre determine the optimal operating conditions. 
-Additionally, data centres can identify models that are 
-continuously failing and stop using those particular hard disks to 
-minimise losses. Furthermore, the hard disk manufactures can use the results of this analysis 
-to identify potential faults in the design of hard disk and rectify the same. The proposed 
-machine learning models can effectively predict hard disk failure by evaluating the various 
-S.M.A.R.T statistics.
+In the last few years, all companies are moving to the cloud and adopting the Software as a Service (SaaS) model. There is a rise in demand for cloud storage. We have observed the development of Storage Area Networks (SANs) and Content Distribution Networks (CDN) to store and serve the content to everyone. Hard disk drives are the physical devices that store all this information in different formats. Over the years, the cost of memory has decreased significantly, but hard disks are still quite expensive. It is necessary to know when a particular hard disk may fail so that the data center can take necessary action like copying data for backup or procure replacement drives. Analyzing different metrics can also help the data center determine the optimal operating conditions. Additionally, data centers can identify models that are continuously failing and stop using those particular hard disks to minimize losses. Furthermore, the hard disk manufactures can use the results of this analysis to identify potential faults in the design of hard disk and rectify the same. The proposed machine learning models can effectively predict hard disk failure by evaluating the various Self-Monitoring, Analysis and Reporting Technology (SMART) statistics.
 
 # Problem Statement
 
-The problem is to predict when a disk is going to fail. To form this prediction, we are given the S.M.A.R.T attributes of hark-disks along with the date they were collected on. We have fed these attributes to our machine learning algorithms and predicted the results.
-We have also compared difference machine learning algorithms and their accuracy on the same dataset. This has helped us formulate which algorithms better suit the dataset and also achive better results.
+The problem is to predict if a disk is going to fail. To form this prediction, we are given the SMART attributes of hark-disks along with the date they were collected on. Using these attributes our algorithm predicts if a drive will fail. We have also compared different machine learning algorithms on the same dataset, to understand which of these best solves the problem in hand.
+
+# Related Work
+
+Predicting hard disk failure is not a new challenge. Using SMART attributes earlier passive prediction involved traditional threshold-based algorithms. But these were successful in predicting drive failures only 3-10% of the time [1]. Thus, we saw a shift to more active, learning based algorithms that use S.MART attributes to make predictions. These attributes are different hard drive reliability indicators of an imminent failure. They are also hard drive model specific, and their meaning might differ across manufacturers. To accommodate these nuances, previous works [2] [3] [4] train algorithms on specific models. Transfer learning techniques have been used to implement the same trained algorithm for different models [2]. However, the algorithm does not perform as well in the second model. 
+Since hard disks do not fail very often, the dataset is highly unbalanced. To overcome this, work has been done in exploring efficiency of SMOTE (Synthetic Minority Oversampling Technique) [4] and resampling [5] techniques. All the aforementioned works implemented supervised learning techniques like Naïve Bayesian, SVM and Random Forest. 
 
 # Dataset
 
@@ -121,7 +98,7 @@ well for further analysis.
 
 Expert domain knowledge and PCA was used to determine the important features for each of 
 the models. Backblaze suggested using the raw S.M.A.R.T statistic 5, 187, 188, 197 and 198 
-for the analysis purpose[7]. We observed similar suggestions in research papers in the domain. 
+for the analysis purpose[9]. We observed similar suggestions in research papers in the domain. 
 
 PCA was not helpful in the feature selection process. The S.M.A.R.T statistic values measured from 
 working hard drives and failed hard drives is very small and hence makes data in a lower 
@@ -152,7 +129,7 @@ As shown in table 1 below, lthough accuracy of prediction in this case was high,
 
 So we decided to limit our scope to last 10 days of a hard disks life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failaing drives -  1) SMOTE and 2) Random resampling with replacement.
 
-What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[6].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. 
+What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large[8].So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve significantly better results as shown in Table 2. 
 
 ##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
 
@@ -643,10 +620,12 @@ We suspect that our models are overfit on cases where there were very few hard d
 1. C. Xu, G. Wang, X. Liu, D. Guo, and T. Liu. Health status assessment and failure prediction for hard drives with recurrent neural networks. IEEE Transactions on Computers, 65(11):3502–3508, Nov 2016.
 2. Mirela Madalina Botezatu, Ioana Giurgiu, Jasmina Bogojeska, and Dorothea Wiesmann. Predicting disk re- placement towards reliable data centers. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 2016.
 3. Jing Shen, Jian Wan, Se-Jung Lim, and Lifeng Yu. Random-forest-based failure prediction for hard disk drives. International Journal of Distributed Sensor Networks, 14(11):1550147718806480, 2018.
-4. Backblaze. Backblaze hard drive state, 2020.
-5. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
-6. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013)
-7. Andy Klein, "What SMART Stats Tell Us About Hard Drives", October 6, 2016, Available : https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/. [Accessed: April 11, 2020]
+4. Nicolas Aussel, Samuel Jaulin, Guillaume Gandon, Yohan Petetin, Eriza Fazli, et al.. Predictive models of hard drive failures based on operational data. ICMLA 2017 : 16th IEEE International Conference On Machine Learning And Applications, Dec 2017, Cancun, Mexico. 
+5. Wendy Li, Ivan Suarez, Juan Camacho,Proactive Prediction of Hard Disk Drive Failure-Project
+6. Backblaze. Backblaze hard drive state, 2020.
+7. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
+8. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013)
+9. Andy Klein, "What SMART Stats Tell Us About Hard Drives", October 6, 2016, Available : https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/. [Accessed: April 11, 2020]
 
 ----
 
