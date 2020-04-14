@@ -123,6 +123,10 @@ The most logical approach to address this class imbalance problem was to make th
 
 One important point to note is that since we're dealing with timeseries data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data. This ensures that we train on past data to predict future data.
 
+<p align="center">
+    <img src="images/supervised_steps.png">
+</p>
+
 As shown in Table 1 below, although accuracy of prediction in this case was high, recall however was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a possible failure event. 
 
 ##### Table 1 : Random Forest results on original dataset for the 1st quarter of 2019
