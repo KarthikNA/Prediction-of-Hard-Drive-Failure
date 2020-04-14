@@ -15,7 +15,7 @@ In the last few years, all companies are moving to the cloud and adopting the So
 
 # Problem Statement
 
-The problem is to predict if a disk is going to fail. To form this prediction, we are given the SMART attributes of hark-disks along with the date they were collected on. Using these attributes our algorithm predicts if a drive will fail. We have also compared different machine learning algorithms on the same dataset, to understand which of these best solves the problem in hand.
+The problem is to predict if a disk is going to fail. To form this prediction, we are given the S.M.A.R.T attributes of hark-disks along with the date they were collected on. Using these attributes our algorithm predicts if a drive will fail. We have also compared different machine learning algorithms on the same dataset, to understand which of these best solves the problem in hand.
 
 # Related Work
 
