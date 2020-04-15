@@ -126,7 +126,7 @@ As shown in Table 1 below, although the accuracy of prediction, in this case, wa
 |1     |0.47     |0.05  |0.08     |
 
 
-The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. Table 2 shows the results XGBoost gave us after this step. 
+The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. We took a lookback window of 10 days, as it gives sufficient time to analyze and fix/replace the drive. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. Table 2 shows the results XGBoost gave us after this step. 
 
 
 ##### Table 2 : XGBoost results after limiting to last 10 days for the 1st quarter of 2019
@@ -139,7 +139,7 @@ The most logical approach to address this class imbalance problem was to make th
 |1     |0.89     |0.16  |0.28     |
 
 
-Since this showed us improvements in terms of precision and recall, we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
+Since this showed us improvements in terms of precision and recall, we decided to set the lookback window of the good drives to 10 days as well. Then we tried two techniques to further augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
 
 What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large.[8] So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. We also tried to downsample the good drive's data to match the number failed drive records, but this produced too little training data set and did not really work well. 
 
@@ -503,6 +503,8 @@ Performing PCA on these six attributes and reducing them to two attributes, we g
     <img src="images/capacity_pca.png">
 </p>
 
+Now that we know ST8000DM002 and ST8000NM0055 belong to the same cluster, what we expect is, if we know the failure behavior of one, we could use it to analyze and predict the behavior of the other. We implemented DBSCAN and K-Means clustering techniques.
+
 1. DBSCAN <br>
 After using grid search on the minimum number of neighbors in the DBSCAN algorithm, we got an accuracy of 83.87% in predicting the model number of a hard disk.
 
@@ -512,8 +514,6 @@ Using the elbow method to find the number of clusters, as observed in PCA, we go
 <p align="center">
     <img src="images/elbow_k_means.png">
 </p>
-
-From above, it is evident that clustering algorithms cannot be used for predicting if the hard drive will fail. However, along with capacity, it could be used to predict which model a hard drive is most similar to.
 
 ### Anomaly Detection
 
