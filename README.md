@@ -154,7 +154,7 @@ In the following graph, we can see how the performance improved as we transforme
 </p>
 
 
-We can see in Table 3 below the improved results after parameter tuning of the Random Forest Classifier on the testing dataset.
+Table 3 shows the improved results after parameter tuning has been performed on the Random Forest Classifier on the testing dataset.
 
 ##### Table 3 :  Random Forest results on testing dataset post parameter tuning
 
