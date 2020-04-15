@@ -644,7 +644,7 @@ Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 20
 
 Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-test-data.html)
 
-# Smart Stats List
+# S.M.A.R.T Stats List
 
 [List of all S.M.A.R.T. Attributes Including Vendor Specific](https://www.data-medics.com/forum/list-of-all-s-m-a-r-t-attributes-including-vendor-specific-t1476.html)
 
