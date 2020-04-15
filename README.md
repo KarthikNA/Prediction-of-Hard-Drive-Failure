@@ -103,17 +103,16 @@ We approached the task of predicting hard disk failures using Supervised as well
 
 The dataset used for both the algorithms is the Backblaze dataset which composes of S.M.A.R.T attributes corresponding to the hard drives. Since the meaning and range of values of the same  S.M.A.R.T attributes can change across models, we decided to create a separate classifier for predicting failures of each hard disk model.
 
-One of the major challenges we faced was the class imbalance problem where we have significantly fewer records for failed disks when compared to those that did not fail. This is primarily because the failure of a hard disk is a rare event given its life span. Only 0.000585% of the dataset consisted of failed records. The label for the failed disk is marked as 1 only on the day of its failure and remains 0 on all other days.
-
-The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
-
-One important point to note is that since we're dealing with time-series data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data. This ensures that we train on past data to predict future data.
 
 <p align="center">
     <img src="images/supervised_steps.png">
 </p>
 
+
+One of the major challenges we faced was the class imbalance problem where we have significantly fewer records for failed disks when compared to those that did not fail. This is primarily because the failure of a hard disk is a rare event given its life span. Only 0.000585% of the dataset consisted of failed records. The label for the failed disk is marked as 1 only on the day of its failure and remains 0 on all other days. 
+
 As shown in Table 1 below, although the accuracy of prediction, in this case, was high, recall, however, was extremely low (0.05) rendering this model ineffective in making good predictions. In the problem of disk failure detection, we require a high recall as it aims to identify what proportion of actual positives was identified correctly. This is most important to us as we wouldn't want to miss predicting a possible failure event. 
+
 
 ##### Table 1 : Random Forest results on original dataset for the 1st quarter of 2019
 
@@ -124,21 +123,27 @@ As shown in Table 1 below, although the accuracy of prediction, in this case, wa
 |0     |1.00     |1.00  |1.00     |
 |1     |0.47     |0.05  |0.08     |
 
-So we decided to limit our scope to the last 10 days of a hard disk life for both good and failing drives. This showed us improvements in terms of recall and hence we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
+
+The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
 
 
-What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large.[8] So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. This technique helped us achieve better results as shown in Table 2. 
+##### Table 2 : Random Forest results after limiting to last 10 days for the 1st quarter of 2019
 
-##### Table 2 : Random Forest results after up-sampling data for the 1st quarter of 2019
-
-> Accuracy:  0.9948433919022154
+> Accuracy:   0.9951358893008677
 
 |labels|precision|recall|f1-score | 
 |------|---------|------|---------|
 |0     |1.00     |1.00  |1.00     |
-|1     |0.50     |0.15  |0.23     |
+|1     |1.00     |0.01  |0.02     |
 
-We also tried to downsample the good drive's data to match the number failed drive records, but this produced too little training data set and did not really work well. Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, the F1 score was used as the metric to tune the model on. 
+
+Since this showed us improvements in terms of precision, we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
+
+What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large.[8] So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. We also tried to downsample the good drive's data to match the number failed drive records, but this produced too little training data set and did not really work well. 
+
+Now that we had our base data ready, next came the task of parameter tuning. We used GridSearchCV to tune XGBoost and RandomizedSearchCV for tuning RandomForest. In both cases, the F1 score was used as the metric to tune the model on. 
+
+One important point to note is that since we're dealing with time-series data, we used the most recent 30% of the dataset for testing and the remaining 70% for training without shuffling the data. This ensures that we train on past data to predict future data.
 
 In the following graph, we can see how the performance improved as we transformed the dataset and tuned the model.
 
