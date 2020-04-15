@@ -101,7 +101,7 @@ suggested features.
 
 We approached the task of predicting hard disk failures using Supervised as well as Unsupervised Learning algorithms.
 
-The dataset used for both the algorithms is the Backblaze dataset which composes of S.M.A.R.T attributes corresponding to the hard drives. Since the meaning and range of values of the same  S.M.A.R.T attributes can change across models, we decided to create a separate classifier for predicting failures of each hard disk model.
+The dataset used for both the algorithms is the Backblaze dataset which composes of S.M.A.R.T attributes corresponding to the hard drives. Since the meaning and range of values of the same  S.M.A.R.T attributes can change across models, we decided to create a separate classifier for predicting failures of each hard disk model. We tested performance on 2 classifiers 1) Random Forest and 2) XGBoost so that we good get a better idea of how various transformations to the dataset were improving over all performance.
 
 
 <p align="center">
@@ -124,7 +124,7 @@ As shown in Table 1 below, although the accuracy of prediction, in this case, wa
 |1     |0.47     |0.05  |0.08     |
 
 
-The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
+The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. Table 2 shows the results XGBoost gave us after this step. 
 
 
 ##### Table 2 : XGBoost results after limiting to last 10 days for the 1st quarter of 2019
@@ -152,7 +152,7 @@ In the following graph, we can see how the performance improved as we transforme
 </p>
 
 
-Table 3 shows results of the Random Forest Classifier on the testing dataset.
+We can see in Table 3 below the improved results after parameter tuning of the Random Forest Classifier on the testing dataset.
 
 ##### Table 3 :  Random Forest results on testing dataset post parameter tuning
 
