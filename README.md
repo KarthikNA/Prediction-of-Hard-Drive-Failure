@@ -127,17 +127,17 @@ As shown in Table 1 below, although the accuracy of prediction, in this case, wa
 The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. 
 
 
-##### Table 2 : Random Forest results after limiting to last 10 days for the 1st quarter of 2019
+##### Table 2 : XGBoost results after limiting to last 10 days for the 1st quarter of 2019
 
 > Accuracy:   0.9951358893008677
 
 |labels|precision|recall|f1-score | 
 |------|---------|------|---------|
 |0     |1.00     |1.00  |1.00     |
-|1     |1.00     |0.01  |0.02     |
+|1     |0.89     |0.16  |0.28     |
 
 
-Since this showed us improvements in terms of precision, we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
+Since this showed us improvements in terms of precision and recall, we tried two techniques to augment data for the failing drives -  1) SMOTE and 2) Random resampling with replacement. The upsampling was done only using the training data and the testing data was left untouched.
 
 What we observed empirically and was confirmed by other researchers is that SMOTE does not work well when the dimensionality of data is large.[8] So we decided to use the resample function from sklearn and upsample only the training data for failed hard disks. We also tried to downsample the good drive's data to match the number failed drive records, but this produced too little training data set and did not really work well. 
 
