@@ -39,7 +39,7 @@ They regularly share data about the performance of these drives as well as other
     <img src="images/backblaze_logo.png">
 </p>
 
-Every disk drive includes Self-Monitoring, Analysis, and Reporting Technology (S.M.A.R.T), 
+Every disk drive includes Self-Monitoring, Analysis, and Reporting Technology (S.M.A.R.T) statistics, 
 which reports internal information about the drive and its primary function is to detect 
 as well as report multiple indicators of hard disk drive reliability with the intent of anticipating 
 imminent hardware failures.
