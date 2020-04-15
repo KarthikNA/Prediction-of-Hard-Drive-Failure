@@ -12,11 +12,15 @@ recognizing features that may be attributed to its failure through machine learn
 
 # Motivation
 
-In the last few years, all companies are moving to the cloud and adopting the Software as a Service (SaaS) model. There is a rise in demand for cloud storage. We have observed the development of Storage Area Networks (SANs) and Content Distribution Networks (CDN) to store and serve the content to everyone. Hard disk drives are the physical devices that store all this information in different formats. Over the years, the cost of memory has decreased significantly, but hard disks are still quite expensive. It is necessary to know when a particular hard disk may fail so that the data center can take necessary action like copying data for backup or procure replacement drives. Analyzing different metrics can also help the data center determine the optimal operating conditions. Additionally, data centers can identify models that are continuously failing and stop using those particular hard disks to minimize losses. Furthermore, the hard disk manufactures can use the results of this analysis to identify potential faults in the design of hard disk and rectify the same. The proposed machine learning models can effectively predict hard disk failure by evaluating the various Self-Monitoring, Analysis, and Reporting Technology (S.M.A.R.T) statistics.
+In the last few years, all companies are moving to the cloud and adopting the Software as a Service (SaaS) model. There is a rise in demand for cloud storage. We have observed the development of Storage Area Networks (SANs) and Content Distribution Networks (CDN) to store and serve the content to everyone. Hard disk drives are the physical devices that store all this information in different formats. Over the years, the cost of memory has decreased significantly, but hard disks are still quite expensive. It is necessary to know when a particular hard disk may fail so that the data center can take necessary action such as copying data for backup, and procuring replacement drives. The need for a proactive method to predict failure events is felt and to address this issue, satistical and Machine Learning techniques are being adopted popularly. 
+
+Apart from proactive prediction, analyzing different metrics can also help the data center determine the optimal operating conditions. Additionally, data centers can identify models that have been consistenly performing poorly and minimize their losses by avoiding the use of these models. These analysis can also be extremely useful for hard disk manufactures as they can leverage the results of this analysis to identify potential faults in the design of hard disk and rectify the same.
+
+Recent research efforts that use Self-Monitoring, Analysis, and Reporting Technology (S.M.A.R.T) statistics to predict hard disk failure have proven to be highly successful. We aim to use these S.M.A.R.T attributes to uncover interesting predictions ourselves.
 
 # Problem Statement
 
-Prediction of hard disk failures using S.M.A.R.T attributes collected over the life time of the hard disk.
+Prediction of hard disk failures using S.M.A.R.T attributes collected over the life time of hard disks.
 
 # Related Work
 
