@@ -503,10 +503,10 @@ Performing PCA on these six attributes and reducing them to two attributes, we g
     <img src="images/capacity_pca.png">
 </p>
 
-1. *DBSCAN* <br>
+1. DBSCAN <br>
 After using grid search on the minimum number of neighbors in the DBSCAN algorithm, we got an accuracy of 83.87% in predicting the model number of a hard disk.
 
-2. *K-Means* <br>
+2. K-Means <br>
 Using the elbow method to find the number of clusters, as observed in PCA, we got k=3. But we ran the model for k=4 since we know that there are 4 models. This gave an accuracy of 88.23%.
 
 <p align="center">
