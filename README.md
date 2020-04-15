@@ -120,7 +120,7 @@ As shown in Table 1 below, although the accuracy of prediction, in this case, wa
 
 > Accuracy:  0.9994109693116142
 
-|labels|precision|recall|f1-score | 
+|Labels|Precision|Recall|F1       | 
 |------|---------|------|---------|
 |0     |1.00     |1.00  |1.00     |
 |1     |0.47     |0.05  |0.08     |
@@ -133,7 +133,7 @@ The most logical approach to address this class imbalance problem was to make th
 
 > Accuracy:   0.9951358893008677
 
-|labels|precision|recall|f1-score | 
+|Labels|Precision|Recall|F1       | 
 |------|---------|------|---------|
 |0     |1.00     |1.00  |1.00     |
 |1     |0.89     |0.16  |0.28     |
@@ -643,19 +643,3 @@ There are numerous hard disk models and to assist in failure prediction, it migh
 7. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
 8. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013)
 9. Andy Klein, "What SMART Stats Tell Us About Hard Drives", October 6, 2016, Available : https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/. [Accessed: April 11, 2020]
-
-----
-
-Dataset = [Hard Drive Data and Stats - Hard drive failure data and stats from 2019](https://www.kaggle.com/jackywangkaggle/hard-drive-data-and-stats)
-
-Source = [Hard Drive Data and Stats](https://www.backblaze.com/b2/hard-drive-test-data.html)
-
-# S.M.A.R.T Stats List
-
-[List of all S.M.A.R.T. Attributes Including Vendor Specific](https://www.data-medics.com/forum/list-of-all-s-m-a-r-t-attributes-including-vendor-specific-t1476.html)
-
-[List of Public SMART Attributes](http://www.t13.org/Documents/UploadedDocuments/docs2005/e05173r0-ACS-SMARTAttributes_List.pdf)
-
-[Western Digital SMART attributes](https://sourceforge.net/p/smartmontools/mailman/message/23829511/)
-
-
