@@ -63,8 +63,7 @@ techniques were adopted to predict the failure of a hard disk drive from S.M.A.R
 
 ## Data Cleaning
 
-We observed that different hard disks showed significantly different behavior at the time of failure. Additionally, we identified different S.M.A.R.T statistics that were needed to identify the failure of each hard disk model. Thus, we selected the hard disk models that failed the most in the dataset. Thus, we were concentrating the predicting the hard disks that failed the most. 
-We determined the top 5 hard disks that failed the maximum number of times in the dataset.
+We observed that different hard disks showed significantly different behavior at the time of failure. Additionally, we identified different S.M.A.R.T statistics that were needed to identify the failure of each hard disk model. Since the hard-disks are working most of the time, the data was biased towards non-failure. Also as soon as the hard-disk failed, it was removed from the server. Hence we only got one datapoint of the hard-disk failing while several of when it was working. To reduce this bias, we only worked with dataset in which the hard-disk was failing frequently and only sampled few of the data-points where the hard-disk was operational.
 
 <p align="center">
     <img src="images/hdd_model_selection.png">
