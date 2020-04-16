@@ -503,7 +503,7 @@ Performing PCA on these six attributes and reducing them to two attributes, we g
     <img src="images/capacity_pca.png">
 </p>
 
-Now that we know ST8000DM002 and ST8000NM0055 belong to the same cluster, what we expect is, if we know the failure behavior of one, we could use it to analyze and predict the behavior of the other. We implemented DBSCAN and K-Means clustering techniques.
+A previous analysis by Backblaze shows that ST8000DM002 and ST8000NM0055 models are not very different[10]. This confirms our observation. Now that we know these two models belong to the same cluster, what we expect is, if we know the failure behavior of one, we could use it to analyze and predict the behavior of the other. We implemented DBSCAN and K-Means clustering techniques.
 
 1. DBSCAN <br>
 After using grid search on the minimum number of neighbors in the DBSCAN algorithm, we got an accuracy of 83.87% in predicting the model number of a hard disk.
@@ -643,3 +643,4 @@ There are numerous hard disk models and to assist in failure prediction, it migh
 7. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
 8. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013)
 9. Andy Klein, "What SMART Stats Tell Us About Hard Drives", October 6, 2016, Available : https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/. [Accessed: April 11, 2020]
+10. https://www.backblaze.com/blog/hard-drive-stats-for-q2-2018/
