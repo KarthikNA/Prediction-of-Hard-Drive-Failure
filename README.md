@@ -48,7 +48,7 @@ Backblaze takes a snapshot of each operational hard drive daily and the data inc
 a label indicating disk failure, and S.M.A.R.T stats.  
 
 Data for the project was collected from January 1st, 2019 to December 31st, 2019 and data was in 365 CSV files
-with each representing one day of the year. Each file has 129 columns. 62 S.M.A.R.T statistics is represented both as raw values as well as normalized values(a total of 124 columns). The other columns provide information about the hard disk and the date of the record. The data is temporal in nature and is more than 10 GB in size. We have 40.7 million
+with each representing one day of the year. Each file has 129 columns. 62 distinct S.M.A.R.T attributes are measured and represented both as raw values as well as normalized values totaling to 124 columns. The other columns provide information about the hard disk and the date of the record. The data is temporal in nature and is more than 10 GB in size. We have 40.7 million
 data points or records in the dataset in total.
 
 The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-test-data.html).
@@ -57,7 +57,7 @@ The dataset can be downloaded [here](https://www.backblaze.com/b2/hard-drive-tes
 
 The data obtained from Backblaze was aggregated and cleaned using different techniques. 
 Relevant features were determined for further analysis. Combinations of supervised and unsupervised learning
-techniques were adopted to predict the failure of a hard disk drive from S.M.A.R.T statistics and cluster hard drives based on S.M.A.R.T statistics. The results were further analyzed and visualized.
+techniques were adopted to predict the failure of a hard disk drive from S.M.A.R.T statistics and cluster hard drives based on S.M.A.R.T statistics. The results were further analyzed and visualized. Sub-sections below explain the above mentioned topics in detail.
 
 <p align="center">
     <img src="images/methodology.png">
@@ -65,23 +65,19 @@ techniques were adopted to predict the failure of a hard disk drive from S.M.A.R
 
 ## Data Cleaning
 
-We observed that different hard disks showed significantly different behavior at the time of failure. Additionally, we identified different S.M.A.R.T statistics that were needed to identify the failure of each hard disk model. Since the hard-disks are working most of the time, the data was biased towards non-failure. Also as soon as the hard-disk failed, it was removed from the server. Hence we only got one datapoint of the hard-disk failing while several of when it was working. To reduce this bias, we only worked with dataset in which the hard-disk was failing frequently and only sampled few of the data-points where the hard-disk was operational.
+We started by observing the raw Backblaze data to get a better understanding of what all preprocessing techiniques were needed to be employed. We observed that different hard disks showed significantly different behavior in terms of S.M.A.R.T statistics at the time of failure. Since the failure of a hard disk is a very rare event given its life span, we also observed a heavy bias in the dataset. Just a few rows were labeled 1 indicating a failure of hard disk on the given day while on all other days of its lifetime, the label remained 0. The records corresponding to this hard disk are no longer available in the dataset. To reduce this bias, we only worked with dataset in which the hard-disk was failing frequently and only sampled a few of the data-points where the hard-disk was operational.
 
 <p align="center">
     <img src="images/hdd_model_selection.png">
 </p>
 
-We observed that ST12000NM0007 was the most used hard disk in the dataset and at the same time, the one that failed the most in the dataset. It had more than twice the number of 
-failures than any other hard disk in the dataset. 
-The image below shows the five hard disks we shortlisted for further analysis.
+We observed that ST12000NM0007 was the most commonly used hard disk in the dataset and at the same time, the one that failed the most in the dataset. It had more than twice the number of failures than any other hard disk in the dataset. Naturally, data from this hard disk model was our first choice to experiment on. Based on our understanding of the dataset, we shortlisted 4 other hard disk data to work with. The image below shows the five selected hard disks.
 
 <p align="center">
     <img src="images/hard_disks.png">
 </p>
 
-We created a subset of the dataset by only selecting the records with the model ST12000NM0007. 
-We first dropped the normalized S.M.A.R.T statistics in the analysis since critical information about the S.M.A.R.T statistic was lost during the normalization process. Additionally, 
-the same information was captured by the same raw S.M.A.R.T statistics. Then we dropped the columns with only NaN values or missing values. Lastly, we eliminated all columns that had the same value for all the records since it would not help in any manner for the machine learning algorithm. We applied the same procedure to obtain subsets of data for the other four models as well for further analysis.
+We started the data cleaning/preprocessing step by creating a subset of the dataset with only model ST12000NM0007. We dropped the normalized S.M.A.R.T statistics and retained the raw values in our analysis as critical information about the S.M.A.R.T statistic was lost during the normalization process. Then we dropped the columns with only NaN values or missing values. Lastly, we eliminated all columns that had the same value for all the records since the importance of these features would be negligible in the machine learning algorithm. We applied the same procedure to obtain subsets of data for the other four models as well for further analysis.
 
 <p align="center">
     <img src="images/feature_reduction.png">
@@ -90,14 +86,9 @@ the same information was captured by the same raw S.M.A.R.T statistics. Then we 
 
 ## Feature Selection
 
-Expert domain knowledge and PCA was used to determine the important features for each of the models. Backblaze suggested using the raw S.M.A.R.T statistic 5, 187, 188, 197 and 198 
-for the analysis purpose[9]. We observed similar suggestions in research papers in the domain. Furthermore, we included the other columns that were remaining after the data cleaning process. 
+Domain knowledge and PCA was used to determine the important features for each of the models. Backblaze suggested the use of raw S.M.A.R.T statistic 5, 187, 188, 197 and 198 for the purpose of analysis [9]. Similar suggestions were made in pioneering research papers in this domain. Hence, we included these 5 statistics along with the other columns that we retained after the data cleaning process. 
 
-The variation in S.M.A.R.T statistic values obtained from 
-working hard drives and failed hard drives is very small and hence makes data in a lower 
-feature space indistinguishable. Thus, PCA was not helpful in the feature selection process. We observed that running the different machine learning 
-algorithms using the features selected by PCA resulted in worse results than the expert 
-suggested features.
+The variation in S.M.A.R.T statistic values obtained from working hard drives and failed hard drives is very small and hence makes data in a lower feature space indistinguishable. Thus, PCA was not helpful in the feature selection process. We observed that running the different machine learning algorithms using the features selected by PCA resulted in worse results than the expert suggested features.
 
 ## Supervised Learning
 
@@ -126,7 +117,7 @@ As shown in Table 1 below, although the accuracy of prediction, in this case, wa
 |1     |0.47     |0.05  |0.08     |
 
 
-The most logical approach to address this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. We took a lookback window of 10 days, as it gives sufficient time to analyze and fix/replace the drive. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. Table 2 shows the results XGBoost gave us after this step. 
+The most logical approach to addressing this class imbalance problem was to make the data for both the classes comparable. At first, we used the data for hard disk ST12000NM0007 in the first quarter of 2019 by modifying the label for the last 10 days of a failed hard disk to 1. We took a lookback window of 10 days, as it gives sufficient time to analyze and fix/replace the drive. Even with this approach, we had 371048 rows for disks that did not fail and 11257 rows for those that failed. Table 2 shows the results XGBoost gave us after this step. 
 
 
 ##### Table 2 : XGBoost results after limiting to last 10 days for the 1st quarter of 2019
@@ -517,7 +508,7 @@ Using the elbow method to find the number of clusters, as observed in PCA, we go
 
 ### Anomaly Detection
 
-Since clustering algorithms did not perform well for failure classification, due to the type of dataset we had, we turned to anomaly detection. We used the Isolation Forest anomaly detection algorithm. However, since this technique also relies on having distinct features for the failed data, which is not true for our dataset, even the tuned models could not accurately identify the failed drives. 
+Since clustering algorithms did not perform well for failure classification, we turned to anomaly detection given the nature of the dataset. We used the Isolation Forest anomaly detection algorithm. However, since this technique also relies on having distinct features for the failed data, which is not true for our dataset, even the tuned models could not accurately identify the failed drives. Results of this algorithm are detailed in Table 6.
 
 ##### Table 6 : Isolation Forest Results
 <table class="tg">
@@ -625,13 +616,13 @@ Since clustering algorithms did not perform well for failure classification, due
 Thus, for the given dataset from our analysis, it is best to use supervised learning techniques like Random Forest (bagging) and XGBoost (boosting). In these methods, the data points even if extremely similar are accurately classified using sufficient tree levels and a number of features to split.
 
 # What's New in Our Approach?
-Through extensive parameters tuning and efficient resampling of data set, we are able to achieve better model performance than existing works. Also, as the Backblaze data set has class labels it is well-suited for supervised learning. Thus, all prior notable works focus on building a classifier that can make accurate predictions. In addition to implementing supervised learning techniques, we analyze if the problem of predicting hard disk failure can be solved using unsupervised methods. Earlier works mainly use unsupervised learning to augment data and tackle the class imbalance problem. We use unsupervised learning to cluster based on hard disk models. We hope this could help in identifying similar hard drives across models, which could then be used to predict drive failures in different models. To the best of our knowledge, we are the first to apply and assess the efficiency of using anomaly detection on the Backblaze dataset to predict failure events.
+Through extensive parameters tuning and efficient resampling of data set, we are able to achieve better model performance than existing works that employed supervised learning. This high performance can be attributed to the fact that the Backblaze data set has class labels it is well-suited for a supervised learning task. In addition to implementing supervised learning techniques, we also analyze if the problem of predicting hard disk failure can be solved using unsupervised methods. Earlier works mainly use unsupervised learning to augment data and tackle the class imbalance problem. To the best of our knowledge, we are the first to apply and assess the efficiency of using anomaly detection and clustering techniques on the Backblaze dataset to predict failure events.
 
 # Conclusion
-We predicted hard disk failure based on its S.M.A.R.T attributes. We used data augmentation techniques like SMOTE and data resampling to handle the class imbalance problem. We were not able to implement a generic model to determine failure, since S.M.A.R.T attributes are model and manufacturer specific. We applied supervised learning techniques like Random Forest and XGBoost on individual hard disk models to predict hard disk failure. We were able to obtain a F1 score of 1 for all the hard disk models we tested on using Random Forest. We further extended the study to predict hard disk failure using unsupervised learning techniques like DBSCAN and K-Means. Unsupervised learning techniques performed poorly due to the wide data distribution. Lastly, we treated failures as an anomaly in our system and thus  applied unsupervised anomaly detection using Isolation Forest.
+We predicted hard disk failure based on its S.M.A.R.T attributes. We used data augmentation techniques like SMOTE and data resampling to handle the class imbalance problem. We were not able to implement a generic model to determine failure, since S.M.A.R.T attributes are model and manufacturer specific. We applied supervised learning techniques like Random Forest and XGBoost on individual hard disk models to predict hard disk failure. We were able to obtain a very high F1 score for all the hard disk models trained using tree-based classifiers. We further extended the study to predict hard disk failure using unsupervised learning techniques like DBSCAN and K-Means to cluster them into groups of failing and non-failing hard drives. We also explored a novel approach of applying anamoly detection techniques for the hard disk prediction problem. Unsupervised learning techniques however performed poorly due to the the nature of the dataset when compared to supervised learning.
 
 # Future Work
-There are numerous hard disk models and to assist in failure prediction, it might not always be feasible to train on the individual models everytime. Thus, we need to look into a more generic approach of hard disk failure prediction. One possible path is to explore transfer learning, where the performance does not diminish when applied on models that the algorithm was not trained on. Another path would be to develop a dataset where the crtitical features in addition to being reported by all manufactures, also imply the same meaning. 
+There are numerous hard disk models and to assist in failure prediction, it might not always be feasible to train on the individual models everytime. Thus, we would like to look into a more generic approach of hard disk failure prediction. One possible path is to explore transfer learning, where the performance does not diminish when applied on models that the algorithm was not trained on. Another path would be to develop a dataset where the crtitical features in addition to being reported by all manufactures, also imply the same meaning. 
 
 # References
 1. C. Xu, G. Wang, X. Liu, D. Guo, and T. Liu. Health status assessment and failure prediction for hard drives with recurrent neural networks. IEEE Transactions on Computers, 65(11):3502–3508, Nov 2016.
