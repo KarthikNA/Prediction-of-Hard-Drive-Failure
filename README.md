@@ -634,4 +634,4 @@ There are numerous hard disk models and to assist in failure prediction, it migh
 7. J. Li et al. Hard drive failure prediction using classification and regression trees. In 44th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, Atlanta, GA, 2014, 2014.
 8. Blagus, R., Lusa, L. SMOTE for high-dimensional class-imbalanced data. BMC Bioinformatics 14, 106 (2013)
 9. Andy Klein, "What SMART Stats Tell Us About Hard Drives", October 6, 2016, Available : https://www.backblaze.com/blog/what-smart-stats-indicate-hard-drive-failures/. [Accessed: April 11, 2020]
-10. https://www.backblaze.com/blog/hard-drive-stats-for-q2-2018/
+10. https://www.backblaze.com/blog/hard-drive-stats-for-q2-2018/. [Accessed: April 13, 2020]
